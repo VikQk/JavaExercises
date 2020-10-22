@@ -5,7 +5,8 @@ public class CashRegister {
 	    private double cashInRegister;   // the amount of cash in the register
 	    private int economicalSold;   // the amount of economical lunches sold
 	    private int gourmetSold;       // the amount of gourmet lunches sold
-	    
+	    double payGourmet = 4.00;
+	    double payEconomical = 2.50;
 
 	    public CashRegister() {
 	        // at start the register has 1000 euros
@@ -19,7 +20,7 @@ public class CashRegister {
 	        //    the amount of the sold lunches is incremented by one
 	        //    the method returns cashGiven - lunch price
 	        // if not enough money is given, all is returned and nothing else happens
-	    	double payEconomical = 2.50;
+	    	
 	    	if (cashGiven < payEconomical) {
 	    		return cashGiven;
 	    	}
@@ -36,7 +37,7 @@ public class CashRegister {
 	        //    the amount of the sold lunches is incremented by one
 	        //    the method returns cashGiven - lunch price
 	        // if not enough money is given, all is returned and nothing else happens
-	    	double payGourmet = 4.00;
+	    	
 	    	if (cashGiven < payGourmet) {
 	    		return payGourmet;
 	    	}
@@ -50,12 +51,18 @@ public class CashRegister {
 	        //    the amount of sold lunches is incremented by one
 	        //    the method returns true
 	        // if not, the method returns false
-		double payEconomical = 2.50;
+		if(card.balance()>= this.payEconomical){
+            this.economicalSold +=1;
+            loadMoneyToCard(card, payEconomical);
+            return true;
+        }else{
+            return false;
+        }
 		
 		}
 		
 		
-	    }
+	    
 
 	    
 	public boolean payGourmet(LyyraCard card) {
@@ -64,6 +71,13 @@ public class CashRegister {
 	        //    the amount of sold lunches is incremented by one
 	        //    the method returns true
 	        // if not, the method returns false
+		if(card.balance()>= this.payGourmet){
+            this.gourmetSold += 1;
+            loadMoneyToCard(card, this.payGourmet);
+            return true;
+        }else{
+            return false;
+        }
 	    }
 
 
