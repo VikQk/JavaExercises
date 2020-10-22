@@ -10,6 +10,7 @@ public class Main {
 	public static void main(String[] args){
 		Scanner reader = new Scanner (System.in);
 		
+		//CREAR MENU, por parametros introduce datos de student y poder agregar un apartment.
 		
 		/*
 		 * System.out.println("Enter a name: "); String ask1 = reader.nextLine();
@@ -26,11 +27,11 @@ public class Main {
 		 * reader.nextInt();
 		 */
 		Student name = new Student("luis", "perez", 12, 6, 1990);
-		Pet pet1 = new Pet("luis", "Kira", 11, 9, 2005);
 		
-		pet1.vacuneDate(8,2005);		
+		Menu menu = new Menu(reader);
+			
 		
-		System.out.println (name + "" + pet1 );
+		
 		
 		
 		

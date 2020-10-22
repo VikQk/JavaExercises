@@ -9,13 +9,20 @@ public class Student extends Person{
 	public Date birthDate;
 	public String apartment;
 	public String pet;	
-	public int age;
-		
-	public Student (String name, String lastName, int day, int month, int year){
+	public int day;
+	public int month;
+	public int year;
+	
+	
+	public Student(String name, String lastName, int day, int month, int year){
+		super(name);
 		
 		this.name = name;
 		this.lastName = lastName;
-		this.birthDate = new Date(day, month, year);		
+		this.day = day;
+		this.month = month;
+		this.year = year;
+		//setDbName(this.name);
 	}
 	
 	//getters y setters
@@ -44,13 +51,6 @@ public class Student extends Person{
 		this.pet = pet;
 	}
 	
-	public Student (String name, String lastName, String pet) {
-		
-		this.name = name;
-		this.lastName = lastName;
-		this.pet = pet;
-		
-	}
 	@Override
 	public String toString() {
 		return "Student [name=" + name + ", lastName=" + lastName + ", birthDate=" + birthDate + ", apartment="
