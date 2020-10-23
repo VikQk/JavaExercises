@@ -9,7 +9,7 @@ public class Author {
 	private char gender;
 	private ArrayList<Book> books;
 	
-//this is author
+//this is author ...
 	 public Author(String name, String email, char gender) {
 	 	this.name = name;
 	 	this.email = email;
