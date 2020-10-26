@@ -36,7 +36,10 @@ public class MainTest {
 	public static void createBook(){
 		//to-do
 		Scanner reader = new Scanner(System.in);
+		Author author1 = new Author("Pedro Perez", "Pedro_P@gmail.com",'P');
 		Author author2 = new Author("Luisa Fernandez", "Luisa_Fdz@gmail.com", 'L');
+		Author author3 = new Author("Antonio Lopez", "Toni_Lpz@gmail.com", 'A');
+				
 		
 		while (true) {
 			System.out.println("Introduce el nombre del libro(En blanco o 0, termina el proceso): ");
@@ -67,7 +70,17 @@ public class MainTest {
 			
 			Book testBook = new Book (ask1, ask2, ask3, ask4, ask5);
 			
-			testBook.setAuthor(author2);
+			System.out.println("A que autor asigna este libro?: ");
+			String selection = reader.nextLine();
+			if(selection.equals("author1")) {
+				testBook.setAuthor(author1);	
+			}
+			if(selection.equals("author2")) {
+				testBook.setAuthor(author2);	
+			}
+			if(selection.equals("author3")) {
+				testBook.setAuthor(author3);	
+			}
 			
 			System.out.println(testBook);
 		}
@@ -75,6 +88,8 @@ public class MainTest {
 	}
 
 	public static void assign(){
+		
+		createBook();
 		
 	}
 
