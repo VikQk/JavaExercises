@@ -2,95 +2,75 @@ package App;
 
 import java.util.*;
 
-public class MainTest {
-
+public class MainTest {	
+	static Scanner reader = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		
-		Scanner reader = new Scanner(System.in);
+		ArrayList<Author> authors = start();
 		
-		start();
-		createBook();
+		System.out.println("Que desea hacer:" + "\n1-Crear nuevo libro" + "\n2-Asignar un libro existente" + "\nSeleccione un numero:");
+		String option = reader.nextLine();
+		if(option.equals("1")) {
+			createBook();
+		}
+		if (option.equals("2")) {
+			assign(authors);
+		}		
 		
 		System.out.println("See you in the sky!");
 		}	
 
-	public static void start(){	
-		Book libro1 = new Book("Silmarilion","J.R.R.Tolkien", 1970, "unknow", 15);
+	public static ArrayList<Author> start(){	
+		Book libro1 = new Book("Silmarillion","J.R.R.Tolkien", 1970, "unknow", 15);
 		Book libro2 = new Book("Petter pan y wendy", "James Matthew Barrie", 1902, "unknow", 5);
 		Book libro3 = new Book("The Hobbit","J.R.R.Tolkien", 1920,"George Allen & Unwin", 11);
 		
-		Author author1 = new Author("Pedro Perez", "Pedro_P@gmail.com",'P');
-		Author author2 = new Author("Luisa Fernandez", "Luisa_Fdz@gmail.com", 'L');
-		Author author3 = new Author("Antonio Lopez", "Toni_Lpz@gmail.com", 'A');
+		Author author1 = new Author("Pedro Perez", "Pedro_P@gmail.com",'M');
+		Author author2 = new Author("Luisa Fernandez", "Luisa_Fdz@gmail.com", 'F');
+		Author author3 = new Author("Antonio Lopez", "Toni_Lpz@gmail.com", 'M');
+				
+		author1.getBooks().add(libro1);
+		author1.getBooks().add(libro2);
+		author1.getBooks().add(libro3);
 		
-		libro1.setAuthor(author2);
-		libro2.setAuthor(author2);
-		libro3.setAuthor(author2);
+		ArrayList<Author> authors = new ArrayList<Author>();
 		
-		System.out.println(libro1);
-		System.out.println(libro2);
-		System.out.println(libro3);
+		authors.add(author1);
+		authors.add(author2);
+		authors.add(author3);
+		
+		System.out.println(authors);
+		return authors;
 		
 		}
 
-	public static void createBook(){
+	public static Book createBook(){
 		//to-do
-		Scanner reader = new Scanner(System.in);
-		Author author1 = new Author("Pedro Perez", "Pedro_P@gmail.com",'P');
-		Author author2 = new Author("Luisa Fernandez", "Luisa_Fdz@gmail.com", 'L');
-		Author author3 = new Author("Antonio Lopez", "Toni_Lpz@gmail.com", 'A');
-				
 		
-		while (true) {
-			System.out.println("Introduce el nombre del libro(En blanco o 0, termina el proceso): ");
-			String ask1 = reader.nextLine();
-			if (ask1.isEmpty()) {
-				break;
-			}
-			System.out.println("Introduce el autor: ");
-			String ask2 = reader.nextLine();
-			if (ask2.isEmpty()) {
-				break;
-			}
-			System.out.println("Introduce el año: ");
-			int ask3 = Integer.valueOf(reader.nextLine());
-			if (ask3==0) {
-				break;
-			}
-			System.out.println("Introduce la editorial: ");
-			String ask4 = reader.nextLine();
-			if (ask4.isEmpty()) {
-				break;
-			}
-			System.out.println("Introduce su precio: ");
-			int ask5 = Integer.valueOf(reader.nextLine());
-			if (ask5==0){
-				break;
-			}			
-			
-			Book testBook = new Book (ask1, ask2, ask3, ask4, ask5);
-			
-			System.out.println("A que autor asigna este libro?: ");
-			String selection = reader.nextLine();
-			if(selection.equals("author1")) {
-				testBook.setAuthor(author1);	
-			}
-			if(selection.equals("author2")) {
-				testBook.setAuthor(author2);	
-			}
-			if(selection.equals("author3")) {
-				testBook.setAuthor(author3);	
-			}
-			
-			System.out.println(testBook);
-		}
+		Utils menu = new Utils();
+		return menu.utils();
 		
 	}
 
-	public static void assign(){
+	public static void assign(ArrayList<Author> authors){
+			
+		Book assign = createBook(); 
 		
-		createBook();
-		
+		System.out.println("A que autor asigna este libro?: "); 
+		String selection = reader.nextLine(); 
+		if(selection.equals("author1")) { 
+		  authors.get(0).getBooks().add(assign);
+		}
+		if(selection.equals("author2")) { 
+			  authors.get(1).getBooks().add(assign);
+		}
+		if(selection.equals("author3")) { 
+			  authors.get(2).getBooks().add(assign);
+		}
+		  
+		System.out.println(authors);
+		 
 	}
 
 

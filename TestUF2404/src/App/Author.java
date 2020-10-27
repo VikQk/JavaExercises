@@ -33,4 +33,10 @@ public class Author {
 	 	String author = this.name + "(" + this.gender + ") at " + this.email;
 	 	return author;
 	 }
+	public ArrayList<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(ArrayList<Book> books) {
+		this.books = books;
+	}
 }

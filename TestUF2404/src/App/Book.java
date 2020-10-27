@@ -17,6 +17,8 @@ public class Book {
 		this.publisher = publisher;
 		this.cost = cost;
 	}
+	
+	public Book() {}
 
 	@Override
 	public String toString() {
