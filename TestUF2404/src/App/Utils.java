@@ -8,6 +8,7 @@ public class Utils {
 	
 
 	public static Book utils() {
+		
 		Scanner reader = new Scanner (System.in);
 		Book testBook = new Book();
 		while (true) {
