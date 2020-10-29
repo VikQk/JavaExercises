@@ -2,7 +2,7 @@ package Bank;
 import java.util.*;
 
 public class Account {
-	//saasd
+	
     private double balance;
     private String owner;
     private String password;
