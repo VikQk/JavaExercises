@@ -7,7 +7,7 @@ import utils.InitialBirdsFilling;
 import view.Menu;
 
 public class Main {
-
+//k
 	public static void main(String[] args) {
 		// Watching up birds!
 		
