@@ -25,9 +25,7 @@ public class DAObirdsDb {
 		MongoCollection<Document> birdsCollection = database.getCollection("BirdsDB");
 		
 		Document mongoArray = new Document("_id", new ObjectId());
-		
-		mongoArray.append("name", bird)
-		
+						
 		birdsCollection.insertOne(mongoArray);
 		
 	}
