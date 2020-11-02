@@ -7,14 +7,21 @@ public class Author {
 	private String name;
 	private String surname;
 	private int age;
-	private List<Bird> books;
+	private List<Book> books;
 
-	public Author(String name, String surname, int age, List<Bird> books) {
-		//super();
+	public Author(String name, String surname, int age, List<Book> books) {
+		super();
 		this.name = name;
 		this.surname = surname;
 		this.age = age;
 		this.books = books;
+	}
+
+	public Author(String authorName, String authorSurname, int authorAge) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.age = age;
 	}
 
 	@Override
@@ -46,11 +53,11 @@ public class Author {
 		this.age = age;
 	}
 
-	public List<Bird> getBooks() {
+	public List<Book> getBooks() {
 		return books;
 	}
 
-	public void setBook(List<Bird> books) {
+	public void setBook(List<Book> books) {
 		this.books = books;
 	}
 

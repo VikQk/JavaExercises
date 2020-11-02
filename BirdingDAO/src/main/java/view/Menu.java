@@ -14,7 +14,7 @@ public class Menu {
 	private BirdsDB db;
 	
 	
-	public Menu(Scanner reader, BirdsDB db) {
+	public Menu(Scanner reader) {
 		this.reader = reader;
 		this.db = db;
 	}
@@ -36,7 +36,7 @@ public class Menu {
 	        if (command.equals("Quit")) {
 	            break;
 	        } else if (command.equals("Add")) {
-	        	Controller.add(this.reader,db);
+	        	Controller.add(this.reader);
 	        } else if (command.equals("Observation")) {
 	        	Controller.observation(this.reader,db);
 	        } else if (command.equals("Show")) {

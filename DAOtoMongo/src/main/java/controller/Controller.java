@@ -1,38 +1,46 @@
 package controller;
 
-import java.util.*;
+import java.io.Closeable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+import org.bson.Document;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 
 import dao.AuthorDAO;
 import model.Author;
-import model.Bird;
 import model.Book;
+import utils.UtilsIO;
+import view.MenuOptions;
 
 public class Controller {
-	
-	static Scanner reader = new Scanner(System.in);
 
-	//create MongoClientURI and MongoClient and MongoDatabase
-	//that is connecting our project to MongoDB Atlas,
-	//particularly database city
+	public static AuthorDAO authorDAO;
+
+	//just init and connect to mongoDB with creation of authorDAO object
+	//needed to carry database
 	public static MongoDatabase init() {
 
 		MongoClientURI connectionString = new MongoClientURI(
-				"mongodb+srv://VikQk:Viktor09111982@cluster0.sslzu.mongodb.net/test");
+				"mongodb+srv://cifo:1234@clustertest.0h8fd.mongodb.net/test");
 		MongoClient mongoClient = new MongoClient(connectionString);
 
 		MongoDatabase database = mongoClient.getDatabase("city");
+
+		authorDAO = Controller.setSource(database);
 
 		return database;
 
 	}
 
-	//create authorDAO java object and set DATA SOURCE, that is
-	//authorDAO is working with MONGO CITY database (MongoDatabase object) created at init()
+	//authorDAO object set to carry database
+	//set database source to authorDAO
 	public static AuthorDAO setSource(MongoDatabase database) {
 
 		AuthorDAO authorDAO = new AuthorDAO();
@@ -41,41 +49,135 @@ public class Controller {
 		return authorDAO;
 
 	}
-	
-	//get authorDAO and create 
-	//books, one author and CALL to authorDAO.saveAurthor
-	public static void add(AuthorDAO authorDAO) {
-		
-		String name;
-		String latinName;
-		int observations;
-		
-		Menu menu = new Menu();
-		
-		List<Bird> birds = new ArrayList<Bird>();
-		
-		while (true) {
-						
-			System.out.println("Insert the name of the bird: ");
-			name  = reader.nextLine();
-			System.out.println("Insert the latinName of the bird: ");
-			latinName = reader.nextLine();
-			System.out.println("Select a number of observations: ");
-			observations = Integer.parseInt(reader.nextLine());
-									
-			}
 
-		birds.add(new Bird(name, latinName, observations));
-		
-		Author birdsDb = new Author("Virgina", "Wolf", 59 , birds);
+	//add new author to mongoDB
+	public static void addAuthor(Scanner reader) {
 
-		authorDAO.saveAuthor(birdsDb);
+		String authorName = UtilsIO.askForName(reader);
+		String authorSurname = UtilsIO.askForSurname(reader);
+		int authorAge = UtilsIO.askAge(reader);
+
+		List<Book> books = new ArrayList<Book>();
+		
+		//create new author JAVA object with string and integer parameters and
+		//list books from ADDBOOK -see addBook method-
+		Author newAuthor = new Author(authorName, authorSurname, authorAge, addBook(reader, books));
+
+		//author JAVA object send to DAO in order to upload to mongoDB as a DOCUMENT, mongo OBJECT
+		authorDAO.saveAuthor(newAuthor);
 	}
 
-	//CALL to printAll from AuthorDAO class thanks to object authorDAO
-	public static void printAll(AuthorDAO authorDAO) {
+	//add new books with a list to a existing author at mongoDB
+	public static void addBookToAuthor(Scanner reader) {
 
-		authorDAO.printAll();
+		String authorName = UtilsIO.askForName(reader);
+		//check if author is in the mongoDB
+		Document authorFound = authorDAO.findOneDocument(authorName);
+
+		//if author is in DB, then, create a list with
+		//the books created from addBook -see ADDBOOK method-
+		if (authorFound != null) {
+			List<Book> books = new ArrayList<Book>();
+			authorDAO.update(authorName, addBook(reader, books));
+		} else
+			System.out.println("file not found");
+
+	}
+
+	//method used from ADDAUTHOR and ADDBOOKTOAUTHOR to get a list of new books
+	//loop while the user needs to create new books in a list
+	//and eventually return that list
+	public static List<Book> addBook(Scanner reader, List<Book> books) {
+
+		while (true) {
+
+			String command = UtilsIO.ask(reader, "Add Book (type QUIT to exit, otherwise go ahead)?");
+			MenuOptions commandEnum = MenuOptions.commandisValid(command);
+
+			if (commandEnum.equals(MenuOptions.QUIT)) {
+				break;
+			}
+
+			String bookTitle = UtilsIO.askForTitle(reader);
+			int bookYear = UtilsIO.askForYear(reader);
+			int bookPages = UtilsIO.askForPages(reader);
+
+			books.add(new Book(bookTitle, bookYear, bookPages));
+		}
+		return books;
+	}
+
+	//delete a book, prior checking a existing author
+	public static void delete(Scanner reader) {
+
+		String authorName = UtilsIO.askForName(reader);
+		DeleteResult deletedAuthor = authorDAO.delete(authorName);
+
+		if (deletedAuthor != null)
+			System.out.println("Delete succesful: " + deletedAuthor);
+		else
+			System.out.println("file not found");
+
+	}
+
+	//find an author and printing the data
+	public static void findOne(Scanner reader) {
+
+		String authorName = UtilsIO.askForName(reader);
+		Document authorFound = authorDAO.findOneDocument(authorName);
+
+		if (authorFound != null)
+			System.out.println(authorFound.toJson());
+		else
+			System.out.println("file not found");
+	}
+
+	//update an author considering all the possible cases to update
+	//if user leave a string out we do not update
+	//if user puts negative number to age we do not update
+	public static void update(Scanner reader) {
+
+		String authorNameToFind = UtilsIO.askForName(reader);
+		String authorName = UtilsIO.askForName(reader);
+		String authorSurname = UtilsIO.askForSurname(reader);
+		int authorAge = UtilsIO.askAge(reader);
+
+		// name & surname & age
+		if (!authorName.isEmpty() && !authorSurname.isEmpty() && authorAge > 0) {
+			authorDAO.update(authorNameToFind, authorName, authorSurname, authorAge);
+			// name & surname
+		} else if (!authorName.isEmpty() && !authorSurname.isEmpty() && authorAge < 0) {
+			authorDAO.update(authorNameToFind, authorName, authorSurname);
+			// name
+		} else if (!authorName.isEmpty() && authorSurname.isEmpty() && authorAge < 0) {
+			authorDAO.update(authorNameToFind, authorName);
+			// surname & age
+		} else if (authorName.isEmpty() && !authorSurname.isEmpty() && authorAge > 0) {
+			authorDAO.update(authorNameToFind, authorSurname, authorAge);
+			// name & age
+		} else if (!authorName.isEmpty() && authorSurname.isEmpty() && authorAge > 0) {
+			authorDAO.update(authorNameToFind, authorName);
+			authorDAO.update(authorNameToFind, authorAge);
+			// age
+		} else if (authorName.isEmpty() && authorSurname.isEmpty() && authorAge > 0) {
+			authorDAO.update(authorNameToFind, authorAge);
+		}
+
+	}
+
+	//getting all the authors and printing all them
+	public static void showAll() {
+
+		MongoCollection<Document> authorsCollection = authorDAO.showAll();
+
+		for (Document authorIterator : authorsCollection.find()) {
+			System.out.println(authorIterator.toJson());
+		}
+	}
+
+	//close the database
+	public static void close(MongoDatabase database) {
+		// to-do close all connections
 	}
 
 }

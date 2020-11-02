@@ -2,29 +2,57 @@ package controller;
 
 import java.util.Scanner;
 
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoDatabase;
+
+
+import dao.DAObirdsDb;
 import model.Bird;
 import service.BirdsDB;
 import utils.UtilsIO;
 
 public class Controller {
 	
+	static Scanner reader = new Scanner (System.in);
+	
+	
+	public static MongoDatabase init() {
+
+		MongoClientURI connectionString = new MongoClientURI(
+				"mongodb+srv://VikQk:Viktor09111982@cluster0.sslzu.mongodb.net/test");
+		MongoClient mongoClient = new MongoClient(connectionString);
+
+		MongoDatabase database = mongoClient.getDatabase("MongoBirding");
+
+		return database;
+
+	}
+	public static DAObirdsDb setSource(MongoDatabase database) {
+
+		DAObirdsDb birdsDAO = new DAObirdsDb();
+		birdsDAO.setDataSource(database);
+		
+		return birdsDAO;
+
+	}
 	//static FrontController methods
-	public static void add(Scanner reader, BirdsDB db) {  
+	public static void add(Scanner reader) {  
 		//Ask for input data
-		
-		
 		
 		String name = UtilsIO.askForName(reader);
 		String nameLatin = UtilsIO.askForNameLatin(reader);
 		
 		//Create object Bird
-		Bird bird = new Bird(name, nameLatin, 0 );
+		Bird bird = new Bird(name, nameLatin, 2 );
 		
+		DAObirdsDb daoBird = new DAObirdsDb();
+		daoBird.saveBird(bird);
 		
 		//Ask if bird is in BirdsDB
-		if (isBirdInDb(bird, db)) {
-			db.addBird(bird);
-		}
+		//if (isBirdInDb(bird, db)) {
+		//	db.addBird(bird);
+		//}
 	}
 			
 	public static void observation(Scanner reader, BirdsDB db) {

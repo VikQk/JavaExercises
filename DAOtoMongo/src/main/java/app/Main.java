@@ -1,28 +1,19 @@
 package app;
 
-import com.mongodb.client.MongoDatabase;
-
-import controller.Controller;
-import dao.AuthorDAO;
+import view.Menu;
 
 public class Main {
 
 	public static void main(String[] args) {
 
+		System.out.println("Loading ....");
 		
+		//create Menu object and invoke loopIO
+		Menu menu = new Menu();
+		menu.loopIO();
 		
-		//connection to db and creation of database MONGO object
-		MongoDatabase database = Controller.init();
-
-		//create the DAO object to manage, handle, access to our Author collection and every document
-		AuthorDAO authorDAO = Controller.setSource(database);
-
-		//add authorDAO to collection
-		Controller.add(authorDAO);
-
-		//print all documents in authors collection thanks to authorDAO
-		Controller.printAll(authorDAO);
-
+		System.out.println("Connection finished.");
+		
 	}
 
 }
