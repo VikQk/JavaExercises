@@ -20,26 +20,7 @@ public class Controller {
 	static Scanner reader = new Scanner (System.in);
 	
 	
-	@SuppressWarnings("resource")
-	public static MongoDatabase init() {
-
-		MongoClientURI connectionString = new MongoClientURI(
-				"mongodb+srv://VikQk:Viktor09111982@cluster0.sslzu.mongodb.net/test");
-		MongoClient mongoClient = new MongoClient(connectionString);
-
-		MongoDatabase database = mongoClient.getDatabase("MongoBirding");
-		MongoCollection<Document> birdsCollection =  database.getCollection("BirdsDB");
-		return database;
-		
-	}
-	public static DAObirdsDb setSource(MongoDatabase database) {
-
-		DAObirdsDb birdsDAO = new DAObirdsDb();
-		birdsDAO.setDataSource(database);
-		
-		return birdsDAO;
-
-	}
+	
 	//static FrontController methods
 	public static void add(Scanner reader, BirdsDB db) {  
 		//Ask for input data
@@ -51,7 +32,7 @@ public class Controller {
 		Bird bird = new Bird(name, nameLatin, 2 );
 		
 		DAObirdsDb daoBird = new DAObirdsDb();
-		daoBird.saveBird(db);
+		daoBird.saveBird(bird);
 		
 		//Ask if bird is in BirdsDB
 		if (isBirdInDb(bird, db)) {

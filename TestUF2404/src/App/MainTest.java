@@ -8,15 +8,19 @@ public class MainTest {
 	public static void main(String[] args) {
 		
 		ArrayList<Author> authors = start();
-		
-		System.out.println("Que desea hacer:" + "\n1-Crear nuevo libro" + "\n2-Asignar un libro existente" + "\nSeleccione un numero:");
-		String option = reader.nextLine();
-		if(option.equals("1")) {
-			createBook();
+		while (true) {
+			System.out.println("Que desea hacer:" + "\n1-Crear nuevo libro" + "\n2-Asignar un libro existente" + "\n3.Salir de la Aplicacion" + "\nSeleccione un numero:");
+			String option = reader.nextLine();
+			if(option.equals("1")) {
+				createBook();
+			}
+			if (option.equals("2")) {
+				assign(authors);
+			}
+			if (option.equals("3")) {
+				break;
+			}
 		}
-		if (option.equals("2")) {
-			assign(authors);
-		}		
 		
 		System.out.println("See you in the sky!");
 		}	

@@ -27,20 +27,20 @@ public class HelloMongoDB {
 		//collection CARS
 		MongoCollection<Document> collection = database.getCollection("cars");
 
-		System.out.println("Number of cars in my CAR collection: " + collection.countDocuments());
+		//System.out.println("Number of cars in my CAR collection: " + collection.countDocuments());
 	
 		//query to my collection and find the first document and then transform to JSON
 		// in order to print that document as JSON and STRING
-		Document myDoc = collection.find().first();
-		System.out.println(myDoc.toJson());
-		System.out.println(myDoc.toString());
+		//Document myDoc = collection.find().first();
+		//System.out.println(myDoc.toJson());
+		//System.out.println(myDoc.toString());
 
 		//create a new Car as a DOCUMENT
 		Document car = new Document("_id", new ObjectId());
 		// set the document with APPEND
-		car.append("make", "Tesla").append("price", 15000d).append("designeBy", "Tesla, Niccola");
-		car.append("make", "Ford").append("price", 5000d).append("designeBy", "Ford, Henry").append("model", "Mustang");
-		
+		//car.append("make", "Tesla").append("price", 15000d).append("designeBy", "Tesla, Niccola");
+		//car.append("make", "Ford").append("price", 5000d).append("designeBy", "Ford, Henry").append("model", "Mustang");
+		car.append("make", "Nissan").append("price", 59000d).append("designeBy", "Makoto, Uchida").append("model", "skyline");
 		
 		//add that document to CARS collection
 		collection.insertOne(car);		

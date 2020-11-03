@@ -23,48 +23,24 @@ public class DAObirdsDb {
 		this.database = database;
 	}
 	
-	public static void addDAO(MongoDatabase database) {
-		MongoCollection<Document> birdsCollection = database.getCollection("BirdsDB");
-		
-		Document mongoArray = new Document("_id", new ObjectId());
-						
-		birdsCollection.insertOne(mongoArray);
-		
-	}
-	public void saveBird(BirdsDB db) {
 	
-		// get collection with THIS, BE CAREFUL it is a MONGO COOLLECTION
-		//MongoCollection<Document> birdsCollection = this.getBirdsCollection();
-		MongoCollection<Document> birdsCollection =  database.getCollection("BirdsDB");
+	public void saveBird(Bird bird) {
+	
+		MongoClientURI connectionString = new MongoClientURI(
+				"mongodb+srv://VikQk:Viktor09111982@cluster0.sslzu.mongodb.net/test");
+	
+		MongoClient mongoClient = new MongoClient(connectionString);
 		
- 		// JAVA list within mongo DOCUMENT
-		List<Document> birdsMongo = new ArrayList<Document>();
+		MongoDatabase database = mongoClient.getDatabase("MongoBirding");
 		
-		// ITERATE all books from author
-		for (Bird birds : db.getBirds()) {
-        
-		// create a JAVA object to be a MONGO DOCUMENT
-	    	Document birdMongo = new Document("_id", new ObjectId());
-			// fill the MONGO DOCUMENT with files from JAVA thanks to getters of book class
-			birdMongo.append("name", birds.getName()).append("latinName", birds.getNameLatin()).append("observations", birds.getObservations());
-			birdsMongo.add(birdMongo);
-			birdsCollection.insertOne(birdMongo);
-		}
+		MongoCollection<Document> collection = database.getCollection("birdsdb");
 		
-		// create a JAVA object to be a MONGO DOCUMENT
-		//Document birdMongo = new Document("_id", new ObjectId());
-		// fill the MONGO DOCUMENT with files from JAVA thanks to getters of author
-		// class
-		// BE CAREFUL: there is an array, books-booksMongo
-		//birdMongo.append("name", getName()).append("latin name", bird.getNameLatin())
-		//		.append("observations", bird.getNameLatin());
-
-		// finally, authorsCollecton calls insertOne and upload authorMongo, it is just
-		// ONE MONGO DOCUMENT
+		Document birdMongo = new Document("_id", new ObjectId());
 		
-		//System.out.println(db + " " +birdsMongo);
+	    birdMongo.append("name", bird.getName()).append("latinName", bird.getNameLatin()).append("observations", bird.getObservations());
+	    	
+		collection.insertOne(birdMongo);
 		
-		//birdsCollection.insertMany(birdsMongo);
 	}
 	public MongoCollection<Document> getBirdsCollection() {
 

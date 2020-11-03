@@ -14,14 +14,11 @@ public class Main {
 //update
 	public static void main(String[] args) {
 		// Watching up birds!
+				
 		
-		MongoDatabase database = Controller.init();
 		
-		DAObirdsDb BirdsDAO = Controller.setSource(database);
-		
-		//Create a Birds Data Base
 		BirdsDB db = new BirdsDB( "birding" );
-		//BirdsDB dbRoger = new BirdsDB( "Rogerbirding" );
+		
 		db.setBirds(InitialBirdsFilling.birds);
 		
 		//Ask user from menu by scanner
