@@ -36,7 +36,7 @@ public class Menu {
 	        if (command.equals("Quit")) {
 	            break;
 	        } else if (command.equals("Add")) {
-	        	Controller.add(this.reader);
+	        	Controller.add(this.reader, db);
 	        } else if (command.equals("Observation")) {
 	        	Controller.observation(this.reader,db);
 	        } else if (command.equals("Show")) {

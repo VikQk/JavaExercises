@@ -2,8 +2,11 @@ package controller;
 
 import java.util.Scanner;
 
+import org.bson.Document;
+
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 
@@ -17,6 +20,7 @@ public class Controller {
 	static Scanner reader = new Scanner (System.in);
 	
 	
+	@SuppressWarnings("resource")
 	public static MongoDatabase init() {
 
 		MongoClientURI connectionString = new MongoClientURI(
@@ -24,9 +28,9 @@ public class Controller {
 		MongoClient mongoClient = new MongoClient(connectionString);
 
 		MongoDatabase database = mongoClient.getDatabase("MongoBirding");
-
+		MongoCollection<Document> birdsCollection =  database.getCollection("BirdsDB");
 		return database;
-
+		
 	}
 	public static DAObirdsDb setSource(MongoDatabase database) {
 
@@ -37,7 +41,7 @@ public class Controller {
 
 	}
 	//static FrontController methods
-	public static void add(Scanner reader) {  
+	public static void add(Scanner reader, BirdsDB db) {  
 		//Ask for input data
 		
 		String name = UtilsIO.askForName(reader);
@@ -47,12 +51,12 @@ public class Controller {
 		Bird bird = new Bird(name, nameLatin, 2 );
 		
 		DAObirdsDb daoBird = new DAObirdsDb();
-		daoBird.saveBird(bird);
+		daoBird.saveBird(db);
 		
 		//Ask if bird is in BirdsDB
-		//if (isBirdInDb(bird, db)) {
-		//	db.addBird(bird);
-		//}
+		if (isBirdInDb(bird, db)) {
+			db.addBird(bird);
+		}
 	}
 			
 	public static void observation(Scanner reader, BirdsDB db) {
