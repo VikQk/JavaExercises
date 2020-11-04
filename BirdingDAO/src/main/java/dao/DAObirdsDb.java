@@ -40,7 +40,7 @@ public class DAObirdsDb {
 		
 		Document birdtoFind = birdFind(bird.getName());
 		
-		if (birdtoFind.containsValue(birdtoFind)) {
+		if (birdtoFind.isEmpty()) {
 		Document birdMongo = new Document("_id", new ObjectId());
 		
 	    birdMongo.append("name", bird.getName()).append("latinName", bird.getNameLatin()).append("observations", bird.getObservations());
