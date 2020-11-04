@@ -14,7 +14,7 @@ public class Menu {
 	private BirdsDB db;
 	
 	
-	public Menu(Scanner reader) {
+	public Menu(Scanner reader, BirdsDB db) {
 		this.reader = reader;
 		this.db = db;
 	}

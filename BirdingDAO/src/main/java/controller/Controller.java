@@ -27,9 +27,9 @@ public class Controller {
 		
 		String name = UtilsIO.askForName(reader);
 		String nameLatin = UtilsIO.askForNameLatin(reader);
-		
+		int observation = UtilsIO.askObservation(reader);
 		//Create object Bird
-		Bird bird = new Bird(name, nameLatin, 2 );
+		Bird bird = new Bird(name, nameLatin, observation );
 		
 		DAObirdsDb daoBird = new DAObirdsDb();
 		daoBird.saveBird(bird);
@@ -38,6 +38,7 @@ public class Controller {
 		if (isBirdInDb(bird, db)) {
 			db.addBird(bird);
 		}
+		System.out.println("Saved in db local!");
 	}
 			
 	public static void observation(Scanner reader, BirdsDB db) {

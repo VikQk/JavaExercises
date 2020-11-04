@@ -24,7 +24,7 @@ public class Main {
 		//Ask user from menu by scanner
 		Scanner reader = new Scanner(System.in);
 		
-		Menu menu = new Menu(reader);
+		Menu menu = new Menu(reader, db);
 		menu.loop(reader);
 		
 		System.out.println("See you in the sky!");
