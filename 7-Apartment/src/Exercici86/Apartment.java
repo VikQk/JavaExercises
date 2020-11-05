@@ -1,7 +1,7 @@
 package Exercici86;
 
 public class Apartment {
-
+	//update final
 	private int rooms; 
 	private int squareMeters; 
 	private int pricePerSquareMeter; 

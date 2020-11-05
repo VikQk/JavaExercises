@@ -2,6 +2,7 @@ package Bank;
 import java.util.*;
 
 public class Accounts {
+	//update final
 	static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) 

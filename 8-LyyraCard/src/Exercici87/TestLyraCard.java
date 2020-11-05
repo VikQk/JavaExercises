@@ -2,7 +2,7 @@ package Exercici87;
 
 
 public class TestLyraCard {
-
+	//update final
 	public static void main(String[] args) { 
 
 		CashRegister unicafeExactum = new CashRegister(); 
