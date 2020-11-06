@@ -49,7 +49,10 @@ public class Main {
 			 Author testAuthor = new Author(optionName, optionCountry);
 			 if(authorRepository.findByName(testAuthor.getName()).equals(testAuthor.getName())){
 				 
-				 Optional<Author> savedAuthor = authorRepository.save(testAuthor);
+				 authorRepository.save(testAuthor);			 
+				 System.out.println("Author saved!");
+			 }else {
+				 System.out.println("The author exist in db! Type another if you want.");
 			 }
 		 }	 
 		
