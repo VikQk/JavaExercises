@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>Library example</title>
+</head>
+<body>
+	<div class="w3-container">
+		<h2>Library, table of books</h2>
+		<p>The HTML template Thymeleaf recibes data from  model object with 
+		attribute tab "library" and uses it  with "th" tags, we also use w3
+		Schools CSS </p>
+		<p>The w3-table-all class combines the w3-table, w3-bordered,
+		 w3-striped and w3-border with classes - w3-hoverable - to show all
+		 the books...</p>
+		 
+		 <table class="w3-table-all, w3-hoverable">
+		 
+		 	<thead>
+		 			<tr class="w3-light-grey">
+		 					<th>Title</th>
+		 					<th>ISBN</th>
+		 					<th>Pages</th>
+		 					<th>Year</th>
+		 					<th>Author</th>
+		 			</tr>
+		 	</thead>
+		 	<tr th:each="book:${library}">
+		 		<td th:text="${book.title}"></td>
+		 		<td th:text="${book.ISBN}"></td>
+		 		<td th:text="${book.Pages}"></td>
+		 		<td th:text="${book.Year}"></td>
+		 		<td th:text="${book.Author}"></td>
+		 	</tr>
+		</table>
+	</div>
+</body>
+</html>
