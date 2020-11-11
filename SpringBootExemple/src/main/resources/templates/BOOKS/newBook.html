@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+</style>
+</head>
+
+<body>
+	<h2>Form add book and some text</h2>
+	<p>The HTML template Thymeleaf recives data from model object with
+		attribute tag "library" and uses it with "th" tags, we also use CSS</p>
+
+
+	<div class="w3-card-4" style="width: 50%;">
+		<div class="w3-container w3-blue">
+			<h2>Add new book</h2>
+		</div>
+		<form class="w3-container" action="insertBook">
+			<p>
+				<label class="w3-text-blue"><b>Title</b></label> <input
+					class="w3-input w3-border w3-light-grey" name="title" type="text">
+			</p>
+			<p>
+				<label class="w3-text-blue"><b>ISBN</b></label> <input
+					class="w3-input w3-border w3-light-grey" name="isbn" type="text">
+			</p>
+
+			<p>
+				<label class="w3-text-blue"><b>Pages</b></label> <input
+					class="w3-input w3-border w3-light-grey" name="pages" type="text">
+			</p>
+
+			<p>
+				<label class="w3-text-blue"><b>Year</b></label> <input
+					class="w3-input w3-border w3-light-grey" name="year" type="text">
+			</p>
+
+			<p>
+				<label class="w3-text-blue"><b>Author</b></label> <input
+					class="w3-input w3-border w3-light-grey" name="author" type="text">
+			</p>
+
+			<p>
+				<button class="w3-btn w3-blue">Add</button>
+			</p>
+		</form>
+	</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
