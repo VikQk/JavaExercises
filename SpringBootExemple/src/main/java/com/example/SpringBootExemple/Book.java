@@ -9,16 +9,16 @@ import javax.persistence.Table;
 public class Book {
 	@Id
 	private String title;
-	private String ISBN;
+	private String isbn;
 	private int pages;
 	private int year;
 	private String author;
 
 	
-	public Book(String title, String iSBN, int pages, int year, String author) {
+	public Book(String title, String isbn, int pages, int year, String author) {
 		super();
 		this.title = title;
-		ISBN = iSBN;
+		this.isbn = isbn;
 		this.pages = pages;
 		this.year = year;
 		this.author = author;
@@ -35,10 +35,10 @@ public class Book {
 		
 	}
 	
-	public Book(String title, String ISBN, int pages) {
+	public Book(String title, String isbn, int pages) {
 		super();
 		this.title = title;
-		this.ISBN = ISBN;
+		this.isbn = isbn;
 		this.pages = pages;
 	}
 
@@ -51,11 +51,11 @@ public class Book {
 	}
 
 	public String getISBN() {
-		return ISBN;
+		return isbn;
 	}
 
-	public void setISBN(String ISBN) {
-		this.ISBN = ISBN;
+	public void setISBN(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public int getPages() {

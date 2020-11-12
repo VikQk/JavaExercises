@@ -1,5 +1,6 @@
 package com.example.SpringBootExemple;
 
+import org.apache.tomcat.jni.Library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,8 @@ public class BookController {
 	
 	@RequestMapping("/insertBook")
 	public String insertBook (Book book, Model model) {
-		
+		System.out.println(model.getAttribute(book.getISBN()));
+		System.out.println(book.getTitle());
 		service.insertBook(book);
 		model.addAttribute("library",service.findAll());
 		
