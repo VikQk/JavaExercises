@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Quote {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@ManyToOne
+	@ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private int id;
 	private String tag;
 	private String sentence;

@@ -32,10 +32,9 @@ public class Book {
 			name= "Book",
 			joinColumns= {@JoinColumn(name="idBook")},
 			inverseJoinColumns = {@JoinColumn(name="idQuote")}
-			)
-	
+			)	
             private ArrayList<Quote> quotes;
-
+		
  public Book() {}
 
 public Book(Integer id, String name) {

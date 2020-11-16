@@ -17,16 +17,15 @@ public class Main {
 
 public static void main(String[] args) {
 		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("library");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-
+		
 		
 		quoteRespository quoteRepository = new quoteRespository(entityManager);
 		bookRepository bookRepository = new bookRepository(entityManager);
 		
 		Book book1 = new Book ("Anna Karenina");
 		Book book2 = new Book ("Orlando");
-			
 		
 		Quote quote1 = new Quote(1,"All happy families are alike; each unhappy family is unhappy in its own way.", 15, book1);
 		Quote quote2 = new Quote(1,"If you look for perfection, you'll never be content.", 10, book1);
@@ -47,14 +46,11 @@ public static void main(String[] args) {
 		book2.setQuote(quote6);
 		book2.setQuote(quote7);
 		book2.setQuote(quote8);
-					
+		
 		Optional<Quote> savedQuote1 = quoteRepository.save(quote1);
 		Optional<Quote> savedQuote2 = quoteRepository.save(quote2);
 		Optional<Quote> savedQuote3 = quoteRepository.save(quote3);
 		Optional<Quote> savedQuote4 = quoteRepository.save(quote4);
 		
-			
-	
-	
-}
+	}
 }

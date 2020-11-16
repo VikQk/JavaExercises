@@ -16,7 +16,7 @@ public class quoteRespository {
 		this.entityManager = entityManager;
 	}
 
-	public List<Book> findAll() {
+	public List<Quote> findAll() {
 		return entityManager.createQuery("from Quote").getResultList();
 	}
 	public Optional<Quote> save(Quote quote) {
