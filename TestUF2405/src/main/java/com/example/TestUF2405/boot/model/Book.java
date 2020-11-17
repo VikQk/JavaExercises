@@ -21,7 +21,7 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String title;
-            private ArrayList<Quote> quotes;
+      //      private ArrayList<Quote> quotes;
 
  Book() {}
 
@@ -56,18 +56,18 @@ public void setTitle(String name) {
 		this.title = name;
 	}
 	
-public ArrayList<Quote> getQuotes() {
-		return quotes;
-	}
+//public ArrayList<Quote> getQuotes() {
+//		return quotes;
+//	}
 
-public void setQuote (Quote quotes) {
-		this.quotes.add(quotes);
-		quotes.setBook(this);
-	}
+//public void setQuote (Quote quotes) {
+//		this.quotes.add(quotes);
+//		quotes.setBook(this);
+//	}
 
 @Override
 public String toString() {
-	return "Book [id=" + id + ", title=" + title + ", quotes=" + quotes + "]";
+	return "Book [id=" + id + ", title=" + title  + "]";
 }
 
 }
