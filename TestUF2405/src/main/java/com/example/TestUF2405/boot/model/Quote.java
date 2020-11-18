@@ -32,6 +32,12 @@ public class Quote {
 		this.numberWords = numberWords;
 		this.book = book;
 	}
+	public Quote (int id, String sentence, int numberWords) {
+		this.id = id;
+		this.sentence = sentence;
+		this.numberWords = numberWords;
+		
+	}
 	public int getId() {
 		return id;
 	}

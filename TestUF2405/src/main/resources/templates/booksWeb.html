@@ -5,7 +5,7 @@
 <h3>Books list</h3>
 <table>
 
-	<tr th:each="Book:${Books}">
+	<tr th:each="Book:${booksWeb}">
 		<td th:text="${Book.id}"></td>
 		<td th:text="${Book.title}"></td>
 		

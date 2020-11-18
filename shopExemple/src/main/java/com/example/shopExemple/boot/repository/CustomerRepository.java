@@ -6,7 +6,7 @@ import com.example.shopExemple.boot.model.Customer;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
-	List<Customer> findByLastName(String lastName);
+	//List<Customer> findByLastName(String lastName);
 
-	Customer findById(long id);
+	//Customer findById(long id);
 }

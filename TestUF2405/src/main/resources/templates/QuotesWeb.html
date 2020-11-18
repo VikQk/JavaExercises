@@ -5,7 +5,7 @@
 <h3>Quotes list</h3>
 <table>
 
-	<tr th:each="Quote:${quotes}">
+	<tr th:each="Quote:${QuotesWeb}">
 		<td th:text="${quote.id}"></td>
 		<td th:text="${quote.tag}"></td>
 		<td th:text="${quote.sentence}"></td>
