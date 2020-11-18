@@ -35,7 +35,12 @@ public class Quote {
 	public Quote (int id, String sentence, int numberWords) {
 		this.id = id;
 		this.sentence = sentence;
+<<<<<<< HEAD
 		this.numberWords = numberWords;		
+=======
+		this.numberWords = numberWords;
+		
+>>>>>>> branch 'master' of https://github.com/VikQk/JavaExercises.git
 	}
 	public int getId() {
 		return id;
