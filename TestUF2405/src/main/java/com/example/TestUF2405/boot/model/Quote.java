@@ -30,7 +30,7 @@ public class Quote {
 		this.id = id;
 		this.sentence = sentence;
 		this.numberWords = numberWords;
-		this.book = book;
+	//	this.book = book;
 	}
 	public Quote (int id, String sentence, int numberWords) {
 		this.id = id;
@@ -61,14 +61,14 @@ public class Quote {
 	public void setNumberWords(int numberWords) {
 		this.numberWords = numberWords;
 	}
-	public Book getBook() {
-		return book;
-	}
-	public void setBook(Book book) {
-		this.book = book;
-	}
+	//public Book getBook() {
+	//	return book;
+//	}
+	//public void setBook(Book book) {
+//		this.book = book;
+//0	}
 	@Override
 	public String toString() {
-		return "Quote [id=" + id + ", sentence=" + sentence + ", numberWords=" + numberWords + ", book=" + book + "]";
+		return "Quote [id=" + id + ", sentence=" + sentence + ", numberWords=" + numberWords + "]";
 	}
 }

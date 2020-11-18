@@ -26,18 +26,8 @@ public class TestUf2405Application {
 		
 		Book book1 = new Book (40,"Anna Karennina", "Leo Tolstoy");
 		Book book2 = new Book (41, "Virginia Woolf", "Orlando");
-						
-		
-		
-		quote1.setBook(book1);
-		quote2.setBook(book1);
-		quote3.setBook(book1);
-		quote4.setBook(book1);
-		quote5.setBook(book1);
-		
-		quote6.setBook(book2);
-		quote7.setBook(book2);
-		quote8.setBook(book2);
+				
+				
 		
 		SpringApplication.run(TestUf2405Application.class, args);
 	}
