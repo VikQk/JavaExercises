@@ -19,5 +19,4 @@ public class BookController {
 		model.addAttribute("booksWeb", service.findAll());
 		return "booksWeb";
 	}
-
 }
