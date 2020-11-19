@@ -6,7 +6,7 @@ import com.example.TestUF2405.boot.model.Quote;
 
 
 
-public interface QuoteRepository extends CrudRepository<Quote, Long> {
+public interface QuoteRepository extends CrudRepository<Quote, Integer> {
 
-	Quote findById(int id);
+	//Quote findById(int id);
 }

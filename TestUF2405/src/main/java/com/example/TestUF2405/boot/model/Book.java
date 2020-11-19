@@ -1,26 +1,21 @@
 package com.example.TestUF2405.boot.model;
 
-import java.util.ArrayList;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-//@Table(name = "BOOK")
+@Table(name = "BOOK")
 //@NamedQueries({ @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"),
 //@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b") })
 public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	private String title;
-	
+	private String title;	
 	
     //private ArrayList<Quote> quotes = new ArrayList <Quote>();
 
@@ -45,10 +40,9 @@ public void setId(Integer id) {
 
 
 public Book(Integer id, String title, String author) {
-	super();
+	
 	this.id = id;
 	this.title = title;
-
 	
 }
 
@@ -65,8 +59,8 @@ public void setTitle(String name) {
 	}
 	
 //public ArrayList<Quote> getQuotes() {
-	//	return quotes;
-	//}
+//	return quotes;
+//}
 //public void setQuote (Quote quotes) {
 //		this.quotes.add(quotes);
 //		quotes.setBook(this);
@@ -76,6 +70,5 @@ public void setTitle(String name) {
 public String toString() {
 	return "Book [id=" + id + ", title=" + title +  "]";
 }
-
 }
 

@@ -21,8 +21,5 @@ public class CustomerRestController {
 		return service.findAll();
 	}
 	
-	
-	
-	
 
 }

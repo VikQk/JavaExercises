@@ -22,15 +22,14 @@ public class Quote {
 	@JoinColumn (name = "Book_id_fk")
 	private Book book;
 		
-	public Quote() {
-		super();
-	}
+	public Quote() {}
+	
 	public Quote(int id, String sentence, int numberWords, Book book) {
 		super();
 		this.id = id;
 		this.sentence = sentence;
 		this.numberWords = numberWords;
-	//	this.book = book;
+		this.book = book;
 	}
 	public Quote (int id, String sentence, int numberWords) {
 		this.id = id;
@@ -42,6 +41,12 @@ public class Quote {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Book getBook() {
+		return book;
+	}
+	public void setBook(Book book) {
+		this.book = book;
 	}
 	public String getSentence() {
 		return sentence;

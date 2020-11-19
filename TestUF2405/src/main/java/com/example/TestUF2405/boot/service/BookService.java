@@ -17,5 +17,9 @@ public class BookService {
 		return repository.findAll();
 		
 	}
+	 public void saveBook(Book book) {
+		 
+		 repository.save(book);
+	 }
 	
 }
