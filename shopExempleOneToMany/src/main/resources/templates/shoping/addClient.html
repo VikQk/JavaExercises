@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org">
 
-</body>
+<h3>Add Client form</h3>
+
+<form action="insertCustomer">
+	<p>
+		<label>First Name</label> <input name="firstName"
+			type="text">
+	</p>
+	<p>
+		<label>Last Name</label> <input name="lastName"
+			type="text">
+	</p>
+	<p>
+		<button>Add</button>
+	</p>
+</form>
 </html>

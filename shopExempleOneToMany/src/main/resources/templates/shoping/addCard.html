@@ -4,8 +4,9 @@
 
 <h3>Add Card form</h3>
 
-
-<form action="insertCreditCard">
+<!-- <form action="insertCreditCard"> -->
+<form th:action="@{/creditcards/insertCreditCard}" th:object="${creditCard}" method="post">
+     
 	<p>
 		<label>Type Credit Card</label> <input name="typeCreditCard"
 			type="text">
@@ -17,18 +18,18 @@
 	<p>
 		<label>Loan</label> <input name="loan" type="number">
 	</p>
-	<div th:object="${client}">
-		<select id="selectCustomer" name="selectCustomer">
-			<option value="">Select Customer</option>
-			<option th:each="client : ${clients}" th:value="${client.id}"
-				th:text="${client.id}+' : '+${client.firstName}+'  '+${client.lastName}"></option>
-		</select>
-	</div>
+
+		<div th:object="${client}">
+			<label>Select Customer</label>
+			<select id="selectCustomer" name="idCustomer">
+				<option th:value="0">No customer</option>
+				<option th:each="client : ${clients}" th:value="${client.id}" 
+					th:text="${client.id}+' : '+${client.firstName}+'  '+${client.lastName}"></option>
+			</select>
+		</div>
 	<p>
-	
-	
-	
-		<button>Add</button>
+		<button type="submit">Add</button>
 	</p>
+	
 </form>
 </html>
