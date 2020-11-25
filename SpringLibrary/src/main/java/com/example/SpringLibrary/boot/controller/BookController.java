@@ -5,8 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.example.SpringBootExemple.Book;
+import com.example.SpringLibrary.boot.model.Book;
 import com.example.SpringLibrary.boot.service.BookService;
 
 @Controller
@@ -26,7 +25,7 @@ public class BookController {
 	}
 	@RequestMapping("/insertBook")
 	public String insertBook (Book book, Model model) {
-		System.out.println(model.getAttribute(book.getISBN()));
+		System.out.println(model.getAttribute(book.getAuthor()));
 		System.out.println(book.getTitle());
 		service.insertBook(book);
 		model.addAttribute("library",service.findAll());
