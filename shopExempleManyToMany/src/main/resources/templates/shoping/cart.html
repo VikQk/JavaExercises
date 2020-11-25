@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<h3>Cart list</h3>
+
+
+
+<table>
+	<tr th:each="item:${session.cart}" th:unless="${session == null}">
+		<td th:text="${item.product.id}"></td>
+		<td th:text="${item.product.name}"></td>
+		<td th:text="${item.product.brand}"></td>
+		<td th:text="${item.product.madein}"></td>
+		<td th:text="${#numbers.formatCurrency(item.product.price)}"></td>
+		<td th:text="${item.quantity}"></td>
+		<td><a
+			th:href="@{/cart/removeFromCart(itemId=${item.product.id})}">Remove
+				from Cart</a></td>
+	</tr>
+</table>
+
+</html>

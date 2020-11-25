@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<h3>Items list</h3>
+<table>
+
+	<tr th:each="item:${items}">
+		<td th:text="${item.id}"></td>
+		<td th:text="${item.name}"></td>
+		<td th:text="${item.brand}"></td>
+		<td th:text="${item.madein}"></td>
+		<td th:text="${#numbers.formatCurrency(item.price)}"></td>
+		<td><a th:href="@{/cart/addToCart(itemId=${item.id})}">Add to
+				Cart</a></td>
+	</tr>
+
+</table>
+
+</html>

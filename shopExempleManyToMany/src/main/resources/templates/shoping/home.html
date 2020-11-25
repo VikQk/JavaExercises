@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<body>
+
+	<h3 align="center">Home</h3>
+	<Br>
+	<Br>
+	<Br>	
+		
+	<p align="center" >Session id:</p>
+	<p align="center" th:text="${serverTime}">The time on the server is</p>
+
+
+	<Br>
+	<Br>
+	<Br>
+	<Br>
+	<p align="center" th:text="${msg}" style="color: blue"></p>
+
+	<div align="center">
+		<table>
+			<tr>
+
+				<td><a th:href="@{/products/show}">Product List</a></td>
+				<td><a th:href="@{/cart/show}">My cart</a></td>
+				<td><a th:href="@{/creditcards/addCreditCard}">Add Card</a></td>
+				<td><a th:href="@{/customers/addCustomer}">Add Client</a></td>
+				<td><a th:href="@{/creditcards/show}">List of Cards</a></td>
+				<td><a th:href="@{/customers/show}">List of clients</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
