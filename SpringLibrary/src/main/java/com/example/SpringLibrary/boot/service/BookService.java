@@ -16,4 +16,16 @@ public class BookService {
 		return repository.findAll();
 	}
 
+	public void insertBook(Book book) {
+		
+		repository.save(book);
+		//library.add(book);
+	}
+	
+	public void deleteBook(Book book) {
+		
+		repository.delete(book);
+		//library.remove(book);
+		
+	}
 }

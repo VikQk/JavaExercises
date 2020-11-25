@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<h2>Usuarios en la Biblioteca</h2>
+<table class="w3-table-all w3-hoverable">
+	<thead>
+		<tr class="w3-gray">
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Apellidos</th>			
+		</tr>
+	</thead>
+
+	<tr th:each="user:${Users}">
+		<td th:text="${user.id}"></td>
+		<td th:text="${user.name}"></td>
+		<td th:text="${user.lastName}"></td>
+		<td><a th:href="@{deleteBook(name=${user.name})}"
+			class="w3-btn w3-blue"> Eliminar</a></td>
+	</tr>
+
+	
+</table>
+
+</html>

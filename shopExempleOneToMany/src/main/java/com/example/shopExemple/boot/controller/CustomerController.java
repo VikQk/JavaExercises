@@ -38,6 +38,5 @@ public class CustomerController {
 		model.addAttribute("clients", service.findAll());
 		return "shoping/clients.html";
 	}
-	
-	
+		
 }
