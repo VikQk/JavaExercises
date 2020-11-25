@@ -36,7 +36,8 @@ public class BookController {
 		service.insertBook(book);
 		model.addAttribute("library",service.findAll());
 		
-		return "books/library.html";	}
+		return "redirect: books/library.html";
+	}
 	
 	@RequestMapping("/deleteBook")
 	public String deleteBook(@RequestParam("title") String title, Model model) {

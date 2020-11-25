@@ -11,6 +11,8 @@
 		<td th:text="${book.id}"></td>
 		<td th:text="${book.title}"></td>
 		<td th:text="${book.author}"></td>
+		<td><a th:href="@{deleteBook(title=${book.title})}"
+							class="w3-btn w3-red">DELETE</a></td>
 	</tr>
 
 </table>
