@@ -6,13 +6,17 @@ import javax.persistence.*;;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	private String name;
 	private String lastName;
-	
-	
+		
 	public User() {}
+	
+	public User(int id) {
+		super();
+		this.id = id;
+	}
 	
 	public User(int id, String name, String lastName) {
 		this.id = id;

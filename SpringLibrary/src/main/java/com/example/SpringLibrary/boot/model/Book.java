@@ -9,9 +9,10 @@ import javax.persistence.Table;
 public class Book {
 	
 	@Id
+	private int id;
 	private String title;
 	private String author;
-	private int id;
+	
 	
 	public Book () {}
 	

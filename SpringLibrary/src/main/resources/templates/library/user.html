@@ -18,11 +18,17 @@
 		<td th:text="${user.id}"></td>
 		<td th:text="${user.name}"></td>
 		<td th:text="${user.lastName}"></td>
-		<td><a th:href="@{deleteBook(name=${user.name})}"
+		<td><a th:href="@{deleteUser(userId=${user.id})}"
 			class="w3-btn w3-blue"> Eliminar</a></td>
 	</tr>
+	<tr>
+		<form class="w3-container" action="addUser">				
 
-	
+			<p>
+				<button class="w3-btn w3-blue">Alta usuario</button>
+			</p>
+		</form>
+		</tr>
 </table>
 
 </html>

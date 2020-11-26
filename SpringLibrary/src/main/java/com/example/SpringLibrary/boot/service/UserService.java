@@ -1,6 +1,7 @@
 package com.example.SpringLibrary.boot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
 
 import com.example.SpringLibrary.boot.model.User;
@@ -23,7 +24,6 @@ public class UserService {
 
 	public void deleteUser(User user) {
 		
-		repository.delete(user);
-		
+		repository.delete(user);		
 	}
 }

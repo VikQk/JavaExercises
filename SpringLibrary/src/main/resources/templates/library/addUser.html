@@ -1,19 +1,39 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<h3>Formulario Registro</h3>
+<style>
+</style>
+</head>
 
-<form action="insertUser">
-	<p>
-		<label>Nombre</label> <input name="name"
-			type="text">
-	</p>
-	<p>
-		<label>Apellidos</label> <input name="lastName"
-			type="text">
-	</p>
-	<p>
-		<button>Alta Usuario</button>
-	</p>
-</form>
+<body>
+	
+	<div class="w3-card-4" style="width: 50%;">
+		<div class="w3-container w3-gray">
+			<h2>Alta Cliente</h2>
+		</div>
+		<form class="w3-container" action="insertUser">
+			<p>
+				<label class="w3-text-gray"><b>Id</b></label> <input
+					class="w3-input w3-border w3-light-grey" name="id" type="text">
+			</p>
+			<p>
+				<label class="w3-text-gray"><b>Nombre</b></label> <input
+					class="w3-input w3-border w3-light-grey" name="name" type="text">
+			</p>
+
+			<p>
+				<label class="w3-text-gray"><b>Apellidos</b></label> <input
+					class="w3-input w3-border w3-light-grey" name="lastName" type="text">
+			</p>			
+
+			<p>
+				<button class="w3-btn w3-blue">Alta usuario</button>
+			</p>
+		</form>
+	</div>
+
+</body>
 </html>
