@@ -34,14 +34,14 @@ public class BookController {
 	}
 	
 	@RequestMapping("/deleteBook")
-	public String deleteBook(@RequestParam("title") String title, Model model) {
+	public String deleteBook(@RequestParam("bookId") int id, Model model) {
 		
-		Book book = new Book(title);
-		
+		Book book = new Book(id);		
 		service.deleteBook(book);
-		model.addAttribute("library",service.findAll());
 		
-		return "books/library.html";
+		model.addAttribute("books",service.findAll());
+		
+		return "redirect:/books/show";
 	}
 }
 

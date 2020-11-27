@@ -20,7 +20,7 @@
 		<td th:text="${book.id}"></td>
 		<td th:text="${book.title}"></td>
 		<td th:text="${book.author}"></td>
-		<td><a th:href="@{deleteBook(title=${book.title})}"
+		<td><a th:href="@{deleteBook(bookId=${book.id})}"
 			class="w3-btn w3-blue"> <=Alquilar</a></td>
 	</tr>
 

@@ -27,6 +27,10 @@ public class Book {
 		this.id = id;
 	}
 
+	public Book(int id2) {
+		this.id = id2;
+	}
+
 	public String getTitle() {
 		return title;
 	}
