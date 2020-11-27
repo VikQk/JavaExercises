@@ -1,7 +1,9 @@
 package com.example.SpringLibrary.boot.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +15,8 @@ public class Book {
 	private String title;
 	private String author;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Book book;
 	
 	public Book () {}
 	

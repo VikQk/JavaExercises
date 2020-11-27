@@ -1,9 +1,7 @@
 package com.example.SpringLibrary.boot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
-
 import com.example.SpringLibrary.boot.model.User;
 import com.example.SpringLibrary.boot.repository.UserRepository;
 

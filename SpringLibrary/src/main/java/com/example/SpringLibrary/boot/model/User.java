@@ -7,6 +7,8 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@OneToMany(mappedBy = "User", fetch = FetchType.LAZY,
+	cascade = CascadeType.ALL)
 	private int id;
 	private String name;
 	private String lastName;

@@ -3,9 +3,9 @@ package com.example.SpringLibrary.boot.repository;
 import javax.persistence.Id;
 
 import org.springframework.data.repository.CrudRepository;
-import com.example.SpringLibrary.boot.model.Book;
+import com.example.SpringLibrary.boot.model.Rent;
 
-public interface BookRepository extends CrudRepository<Book, Id> {
+public interface RentRepository extends CrudRepository<Rent, Id>{
 
 	
 }
