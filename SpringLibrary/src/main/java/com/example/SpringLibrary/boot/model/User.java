@@ -3,12 +3,13 @@ package com.example.SpringLibrary.boot.model;
 import javax.persistence.*;;
 
 @Entity
+@Table(name="USER")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@OneToMany(mappedBy = "User", fetch = FetchType.LAZY,
-	cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "User", fetch = FetchType.LAZY,
+	//cascade = CascadeType.ALL)
 	private int id;
 	private String name;
 	private String lastName;
@@ -20,8 +21,8 @@ public class User {
 		this.id = id;
 	}
 	
-	public User(int id, String name, String lastName) {
-		this.id = id;
+	public User(String name, String lastName) {
+		
 		this.name = name;
 		this.lastName = lastName;
 	}

@@ -5,23 +5,22 @@
 
 
 <h2>Registro alquiler</h2>
-<img
-	src="https://static.vecteezy.com/system/resources/thumbnails/001/200/145/small/books.png">
 <table class="w3-table-all w3-hoverable">
 	<thead>
 		<tr class="w3-gray">
 			<th>Id</th>
-			<th>Titulo</th>
-			<th>Autor</th>			
+			<th>Usuario</th>
+			<th>Libro</th>			
 		</tr>
 	</thead>
 
 	<tr th:each="atribut:${rent}">
 		<td th:text="${atribut.id}"></td>
-		<td th:text="${atribut.timestamp}"></td>
-		<td th:text="${atribut.timeLimit}"></td>
+  		<!-- <td th:text="${atribut.timestamp}"></td>
+		<td th:text="${atribut.timeLimit}"></td> -->
+		<td th:text="${atribut.user}"></td>
 		<td><a th:href="@{deleteRent(rentId=${atribut.id})}"
-			class="w3-btn w3-blue"> <=Alquilar</a></td>
+			class="w3-btn w3-blue"> Devolver</a></td>
 	</tr>
 
 </table>

@@ -26,8 +26,20 @@ public class RentController {
 		return "library/rent";
 			
 	}
+	
+	@RequestMapping("/createRent")
+	public String createRent(@RequestParam("bookId") int id, Model model) {
+		
+		Rent rent = new Rent (id);
+		service.insertRent(rent);
+		
+		model.addAttribute("books",service.findAll());
+		
+		return "redirect:/books/show";
+	}
+	
 	@RequestMapping("/insertRent")
-	public String insertBook (Rent rent, Model model) {
+	public String insertRent (Rent rent, Model model) {
 		
 		System.out.println(rent.getId());
 		service.insertRent(rent);

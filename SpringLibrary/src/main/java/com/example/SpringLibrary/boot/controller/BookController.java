@@ -1,5 +1,7 @@
 package com.example.SpringLibrary.boot.controller;
 
+import java.text.DateFormat;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +19,17 @@ public class BookController {
 	BookService service;
 	
 	@RequestMapping("/show")
-	public String showBooks(Model model) {
-			
+	public String showBooks(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
 		model.addAttribute("books", service.findAll());
+		model.addAttribute("serverTime", formattedDate);
 		return "library/books";
 			
-	}
+	}	
+	
 	@RequestMapping("/insertBook")
 	public String insertBook (Book book, Model model) {
 		System.out.println(model.getAttribute(book.getAuthor()));

@@ -2,21 +2,28 @@ package com.example.SpringLibrary.boot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name= "BOOK")
 public class Book {
 	
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String title;
 	private String author;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Book book;
+	//@ManyToOne(fetch = FetchType.LAZY)
+	//@JsonIgnore
+	//private Book book;
 	
 	public Book () {}
 	
@@ -24,11 +31,11 @@ public class Book {
 		this.title = title;
 	}
 	
-	public Book(String title, String author, int id) {
+	public Book(String title, String author) {
 		super();
 		this.title = title;
 		this.author = author;
-		this.id = id;
+		
 	}
 
 	public Book(int id2) {
@@ -58,6 +65,8 @@ public class Book {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+
 
 	@Override
 	public String toString() {

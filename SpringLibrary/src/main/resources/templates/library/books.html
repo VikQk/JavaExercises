@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-
+<p align="right" th:text="${serverTime}"></p>
 <h2>Biblioteca de Libros</h2>
+
 <img
 	src="https://static.vecteezy.com/system/resources/thumbnails/001/200/145/small/books.png">
 <table class="w3-table-all w3-hoverable">
@@ -20,7 +20,7 @@
 		<td th:text="${book.id}"></td>
 		<td th:text="${book.title}"></td>
 		<td th:text="${book.author}"></td>
-		<td><a th:href="@{deleteBook(bookId=${book.id})}"
+		<td><a th:href="@{/rents/createRent(bookId=${book.id})}"
 			class="w3-btn w3-blue"> <=Alquilar</a></td>
 	</tr>
 
