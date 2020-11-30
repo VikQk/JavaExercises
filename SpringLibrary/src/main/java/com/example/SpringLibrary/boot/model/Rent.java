@@ -31,14 +31,15 @@ public class Rent {
 	public Rent(Long id, Date timestamp, Date timeLimit, User user, List<Book> bookRent) {
 		super();
 		
-		Id = id;
+		this.Id = id;
 		
 		//this.user = user;
 		//this.bookRent = bookRent;
 	}
 
-	public Rent(int id2) {
+	public Rent(Long id) {
 		// TODO Auto-generated constructor stub
+		this.Id = id;
 	}
 
 	public Long getId() {

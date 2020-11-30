@@ -28,7 +28,7 @@ public class RentController {
 	}
 	
 	@RequestMapping("/createRent")
-	public String createRent(@RequestParam("bookId") int id, Model model) {
+	public String createRent(@RequestParam("bookId") Long id, Model model) {
 		
 		Rent rent = new Rent (id);
 		service.insertRent(rent);
@@ -49,7 +49,7 @@ public class RentController {
 	}
 	
 	@RequestMapping("/deleteRent")
-	public String deleteBook(@RequestParam("rentId") int id, Model model) {
+	public String deleteBook(@RequestParam("rentId") Long id, Model model) {
 		
 		Rent rent = new Rent(id);		
 		service.deleteRent(rent);

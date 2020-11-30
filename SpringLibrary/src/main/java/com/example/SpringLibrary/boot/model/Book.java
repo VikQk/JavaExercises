@@ -38,8 +38,8 @@ public class Book {
 		
 	}
 
-	public Book(Long id2) {
-		this.id = id2;
+	public Book(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
