@@ -37,7 +37,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/deleteUser")
-	public String deleteUser(@RequestParam("userId") int id , Model model) {
+	public String deleteUser(@RequestParam("userId") Long id , Model model) {
 		
 		User user = new User(id);
 		service.deleteUser(user);

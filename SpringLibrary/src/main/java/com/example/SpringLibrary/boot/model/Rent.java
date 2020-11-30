@@ -15,7 +15,7 @@ public class Rent {
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)	
-	private int Id;
+	private Long Id;
 	
 	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name="USER_ID")
@@ -28,9 +28,9 @@ public class Rent {
 
 	public Rent () {}
 
-	public Rent(int id, Date timestamp, Date timeLimit, User user, List<Book> bookRent) {
+	public Rent(Long id, Date timestamp, Date timeLimit, User user, List<Book> bookRent) {
 		super();
-		Date date = new Date();
+		
 		Id = id;
 		
 		//this.user = user;
@@ -41,11 +41,11 @@ public class Rent {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 

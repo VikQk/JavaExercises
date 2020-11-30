@@ -10,13 +10,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	//@OneToMany(mappedBy = "User", fetch = FetchType.LAZY,
 	//cascade = CascadeType.ALL)
-	private int id;
+	private Long id;
 	private String name;
 	private String lastName;
 		
 	public User() {}
 	
-	public User(int id) {
+	public User(Long id) {
 		super();
 		this.id = id;
 	}
@@ -27,11 +27,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

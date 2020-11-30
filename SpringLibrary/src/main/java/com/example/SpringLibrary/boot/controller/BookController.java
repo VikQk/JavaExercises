@@ -41,7 +41,7 @@ public class BookController {
 	}
 	
 	@RequestMapping("/deleteBook")
-	public String deleteBook(@RequestParam("bookId") int id, Model model) {
+	public String deleteBook(@RequestParam("bookId") Long id, Model model) {
 		
 		Book book = new Book(id);		
 		service.deleteBook(book);

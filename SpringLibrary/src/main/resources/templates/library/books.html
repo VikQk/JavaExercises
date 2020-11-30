@@ -2,7 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<p align="right" th:text="${serverTime}"></p>
+
+<div class="w3-container">
+	
+		
+		<div class="w3-bar w3-black w3-border">
+
+			<a th:href="@{/}" class="w3-bar-item w3-button w3-mobile">Home</a>
+			<a	th:href="@{/customers}" class="w3-bar-item w3-button w3-mobile">Customers</a>
+			<a th:href="@{/products}" class="w3-bar-item w3-button w3-mobile">Products</a>
+			<a th:href="@{/buy}" class="w3-bar-item w3-button w3-mobile">Buy</a>
+
+			<a onclick="document.getElementById('id01').style.display='block'"
+					class="w3-bar-item w3-button w3-mobile w3-right">Log in</a>
+			<a onclick="document.getElementById('id02').style.display='block'"
+					class="w3-bar-item w3-button w3-mobile w3-right">My Cart</a>
+			<input	type="text"
+					class="w3-bar-item w3-input w3-white w3-mobile w3-right"
+					placeholder="Search..">
+			
+			<button class="w3-bar-item w3-button w3-green w3-mobile w3-right">Go</button>
+			<a class="w3-bar-item w3-right" th:text="${serverTime}"></a>
+		</div>
+		</div>
+<div class="w3-container">
 <h2>Biblioteca de Libros</h2>
 
 <img
@@ -21,9 +44,9 @@
 		<td th:text="${book.title}"></td>
 		<td th:text="${book.author}"></td>
 		<td><a th:href="@{/rents/createRent(bookId=${book.id})}"
-			class="w3-btn w3-blue"> <=Alquilar</a></td>
+			class="w3-btn w3-blue"> Alquilar</a></td>
 	</tr>
 
 </table>
-
+</div>
 </html>
