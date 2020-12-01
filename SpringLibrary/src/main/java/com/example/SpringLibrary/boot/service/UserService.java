@@ -1,5 +1,7 @@
 package com.example.SpringLibrary.boot.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.SpringLibrary.boot.model.User;
@@ -23,5 +25,9 @@ public class UserService {
 	public void deleteUser(User user) {
 		
 		repository.delete(user);		
+	}
+	public Optional<User> findById (long id) {
+
+		return repository.findById(id);
 	}
 }
