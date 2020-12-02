@@ -1,5 +1,7 @@
 package com.example.SpringLibrary.boot.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.SpringLibrary.boot.model.Book;
@@ -28,4 +30,9 @@ public class BookService {
 		//library.remove(book);
 		
 	}
+	public Optional<Book> findById (long id) {
+
+		return repository.findById(id);
+	}
+	
 }

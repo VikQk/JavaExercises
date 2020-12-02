@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.SpringLibrary.boot.model.Book;
+import com.example.SpringLibrary.boot.model.User;
 import com.example.SpringLibrary.boot.service.BookService;
+import com.example.SpringLibrary.boot.service.UserService;
 
 @Controller
 @RequestMapping("/books")
@@ -19,16 +21,30 @@ public class BookController {
 	@Autowired
 	BookService service;
 	
+	@Autowired
+	UserService uService;
+	
 	@RequestMapping("/show")
 	public String showBooks(Locale locale, Model model,  HttpSession session) {
 		
-		//Date date = new Date();
-		//DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		//String formattedDate = dateFormat.format(date);
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+		String formattedDate = dateFormat.format(date);
+
+		model.addAttribute("serverTime", formattedDate);
+		
+		model.addAttribute(session.getAttribute("userId"));		
+		
 		model.addAttribute("books", service.findAll());
-		model.getAttribute("timeStamp");
+		
+		Object foundUser = session.getAttribute("userId");
+		System.out.println(foundUser);
+		model.addAttribute("user", foundUser);
+		
+		
 		return "library/books";
-			
+		
 	}	
 	
 	@RequestMapping("/insertBook")

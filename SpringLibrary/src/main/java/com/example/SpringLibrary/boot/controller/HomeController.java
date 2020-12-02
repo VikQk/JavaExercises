@@ -30,49 +30,34 @@ public class HomeController {
 	@RequestMapping(value = { "/" ,"/*"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-
+		//Unicamente muestra la hora actual de nuesto equipo.
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
 		String formattedDate = dateFormat.format(date);
-
 		model.addAttribute("serverTime", formattedDate);
+		session.setAttribute("serverTime", formattedDate);
 		
-		
-		
+		//creamos un string donde guardamos el numero de sesion creado automaticamente 
+		//añadimos un atributo llamado "sid" a nuestra sesion que contiene el String Sid creado anteriormente, para que nuestra web login.html pueda renderizar en pantalla.
 		String sid = session.getId();
 		session.setAttribute("sid", sid);
-		//System.out.println("Session id: " + sid);
 		
-		//session.setAttribute("status", StatusSession.CREATED);
-		session.setAttribute("timestamp", formattedDate);
-
+		//añadimos a model un atributo llamado "clients" que contendra todos los clients que encuentre service en nuestra DB H2.
 		model.addAttribute("clients", service.findAll());
-		
-		
+				
 		return "library/login";
 	}
 	
 	
 	@RequestMapping(value = { "/loginUser" }, method = RequestMethod.POST)
 	public String loginCustomer ( @RequestParam("idUser") Long id, Model model, HttpSession session) {
-		
-		
-		Optional<User> foundUser = service.findById(id);
-	
+				
+		Optional<User> foundUser = service.findById(id);	
 
+		session.setAttribute("userId", id);
 		// Search for a book with an invalid ID
 		if (foundUser.isPresent()) session.setAttribute("User", foundUser.get());
 		
 		return "library/login";
 	}
-	
-	/*
-	 * @RequestMapping(value = { "/*" }, method = RequestMethod.GET) public String
-	 * error (Locale locale, Model model, HttpSession session) {
-	 * 
-	 * 
-	 * //to-do error site return "shoping/error"; }
-	 */
-
 }

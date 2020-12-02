@@ -12,7 +12,7 @@
 			<a th:href="@{/buy}" class="w3-bar-item w3-button w3-mobile">Pagar</a>
 
 			<a onclick="document.getElementById('id01').style.display='block'"
-					class="w3-bar-item w3-button w3-red w3-mobile w3-right">Inicio Sesion</a>
+					class="w3-bar-item w3-button w3-red w3-mobile w3-right"th:text="${user}"></a>
 			<a onclick="document.getElementById('id02').style.display='block'"
 					class="w3-bar-item w3-button w3-mobile w3-right">Mi Carrito</a>
 			<input	type="text"
