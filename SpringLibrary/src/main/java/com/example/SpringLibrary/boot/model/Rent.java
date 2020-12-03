@@ -22,21 +22,22 @@ public class Rent {
 	@JsonIgnore
 	private User userId;	
 	
-	//@OneToMany (mappedBy = "BOOK", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	//@JoinColumn(name = "Book_ID")
-	//private List <Book> bookRent;
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JoinColumn(name = "Book_ID")
+	private Book bookId;
 
 	public Rent () {}
 
-	public Rent(Long id, Date timestamp, Date timeLimit, User user, List<Book> bookRent) {
+	public Rent( User user,Book book) {
 		super();
 		
-		this.Id = id;
+		this.userId = user;
+		this.bookId = book;
 		
-		//this.user = user;
-		//this.bookRent = bookRent;
+		
 	}
 
+	
 	public Rent(Long id) {
 		// TODO Auto-generated constructor stub
 		this.Id = id;
@@ -50,25 +51,22 @@ public class Rent {
 		Id = id;
 	}
 
-	
-	public User getUser() {
+	public User getUserId() {
 		return userId;
 	}
 
-	public void setUser(User user) {
-		this.userId = user;
+	public void setUserId(User userId) {
+		this.userId = userId;
 	}
 
-	//public List<Book> getBookRent() {
-	//	return bookRent;
-	//}
+	public Book getBookId() {
+		return bookId;
+	}
 
-	//public void setBookRent(List<Book> bookRent) {
-	//	this.bookRent = bookRent;
-	//}
+	public void setBookId(Book bookId) {
+		this.bookId = bookId;
+	}
 
-	
-	
 	
 	
 }

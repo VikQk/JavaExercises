@@ -1,5 +1,9 @@
 package com.example.SpringLibrary.boot.controller;
 
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.SpringLibrary.boot.model.Book;
 import com.example.SpringLibrary.boot.model.Rent;
+import com.example.SpringLibrary.boot.model.User;
 import com.example.SpringLibrary.boot.service.BookService;
 import com.example.SpringLibrary.boot.service.RentService;
+import com.example.SpringLibrary.boot.service.UserService;
 
 @Controller
 @RequestMapping("/rents")
@@ -19,30 +25,40 @@ public class RentController {
 	@Autowired
 	RentService service;
 	
+	@Autowired
+	BookService bService;
+	
+	@Autowired
+	UserService uService;
+	
 	@RequestMapping("/show")
-	public String showRents(Model model) {
-			
+	public String showRents(Model model,HttpSession session) {
+				
 		model.addAttribute("rent", service.findAll());
 		return "library/rent";
 			
 	}
 	
 	@RequestMapping("/createRent")
-	public String createRent(@RequestParam("bookId") Long id, Model model) {
+	public String createRent(@RequestParam("bookId") Long id, Model model,HttpSession session) {
 		
-		Rent rent = new Rent (id);
+		Optional<Book> foundBook = bService.findById(id);
+		Optional<User> foundUser = uService.findById((Long)session.getAttribute("userId"));
+		Rent rent = new Rent ();
+		rent.setUserId(foundUser.get());
+		rent.setBookId(foundBook.get());
 		service.insertRent(rent);
 		
-		model.addAttribute("books",service.findAll());
+		model.addAttribute("rent",service.findAll());
 		
-		return "redirect:/books/show";
+		return "redirect:/rents/show";
 	}
 	
 	@RequestMapping("/insertRent")
-	public String insertRent (Rent rent, Model model) {
+	public String insertRent (@RequestParam("rentId")Long id, Model model, HttpSession session) {
 		
-		System.out.println(rent.getId());
-		service.insertRent(rent);
+		System.out.println("rentId");
+		//service.insertRent(rent);
 		model.addAttribute("library",service.findAll());
 		
 		return "redirect: /rents/show";

@@ -54,7 +54,7 @@ public class HomeController {
 				
 		Optional<User> foundUser = service.findById(id);	
 
-		session.setAttribute("userId", id);
+		session.setAttribute("userId",id);
 		// Search for a book with an invalid ID
 		if (foundUser.isPresent()) session.setAttribute("User", foundUser.get());
 		

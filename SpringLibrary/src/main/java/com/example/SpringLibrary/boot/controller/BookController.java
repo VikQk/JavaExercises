@@ -29,18 +29,15 @@ public class BookController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
 		String formattedDate = dateFormat.format(date);
-
 		model.addAttribute("serverTime", formattedDate);
 		
-		model.addAttribute(session.getAttribute("userId"));		
+	
 		
 		model.addAttribute("books", service.findAll());
 		
-		Object foundUser = session.getAttribute("userId");
-		System.out.println(foundUser);
-		model.addAttribute("user", foundUser);
+		//System.out.println(service.findById((Long)session.getAttribute("userId")));
+		model.addAttribute("user", uService.findById((Long)session.getAttribute("userId")));
 		
 		
 		return "library/books";

@@ -16,9 +16,9 @@
 
 	<tr th:each="atribut:${rent}">
 		<td th:text="${atribut.id}"></td>
-  		<!-- <td th:text="${atribut.timestamp}"></td>
-		<td th:text="${atribut.timeLimit}"></td> -->
-		<td th:text="${atribut.user}"></td>
+  		<!-- <td th:text="${atribut.timestamp}"></td>-->		
+		<td th:text="${atribut.userId}"></td>
+		<td th:text="${atribut.bookId}"></td>
 		<td><a th:href="@{deleteRent(rentId=${atribut.id})}"
 			class="w3-btn w3-blue"> Devolver</a></td>
 	</tr>
