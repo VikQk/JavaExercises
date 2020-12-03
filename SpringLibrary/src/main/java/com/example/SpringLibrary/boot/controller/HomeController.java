@@ -21,7 +21,7 @@ public class HomeController {
 	
 	@Autowired
 	UserService service;
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -29,7 +29,7 @@ public class HomeController {
 
 	@RequestMapping(value = { "/" ,"/*"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		//logger.info("Welcome home! The client locale is {}.", locale);
 		//Unicamente muestra la hora actual de nuesto equipo.
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);

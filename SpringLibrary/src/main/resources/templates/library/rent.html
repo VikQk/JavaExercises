@@ -2,7 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<style> h2,h3{
+ font-family: Comic Sans Ms, sans-serif;
+}
+</style>
 
 <h2>Registro alquiler</h2>
 <table class="w3-table-all w3-hoverable">
@@ -21,7 +24,9 @@
 		<td th:text="${atribut.bookId}"></td>
 		<td><a th:href="@{deleteRent(rentId=${atribut.id})}"
 			class="w3-btn w3-blue"> Devolver</a></td>
+		
 	</tr>
+	<tr><td><h3><a th:href="@{/books/show}" class="w3-btn w3-blue">Volver</a></h3></tr>
 
 </table>
 
