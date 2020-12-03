@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<style>
+.header {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: blue;
+	color: grey;
+	text-align: center;
+}
+</style>
+<head>
+<meta charset="UTF-8">
 
+<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"></title>
 
+</head>
 <body>
+	<div class="w3-bar w3-black w3-border">
+	<a th:href="@{/}" class="w3-bar-item w3-button w3-mobile">Home</a>
+	<a th:href="@{/books/show}" class="w3-bar-item w3-button">Mi Biblioteca</a>
+	
+	
+	<form align="right" th:action="@{/loginUser}"
+		th:object="${client}" method="post">
+<a th:text="${session.sid}"></a>
+		<a class="w3-container" align="center" th:object="${client}">
+			<label>Selecciona Usuario</label> <select id="selectCustomer"
+				name="idUser">
+				<option th:value="0">---Sin Registro---</option>
+				<option th:each="client : ${clients}" th:value="${client.id}"
+					th:text="${client.id}+' : '+${client.name}+'  '+${client.lastName}"></option>
+			</select>
+			
+			<button class="w3-button  w3-blue  w3-padding"type="submit">Iniciar</button>
+				
+		</a>		
 
-	<h3 align="center">Log in</h3>
+	</form>
+	
+	</div>
+	<h3 align="center">Biblioteca Online</h3>
 	<Br>
 	<Br>
 	<Br>
@@ -27,10 +67,10 @@
 
 
 
-		<div align="center" th:object="${client}">
-			<label>Select Customer</label> <select id="selectCustomer"
+		<div class="w3-container" align="center" th:object="${client}">
+			<label>Selecciona Usuario</label> <select id="selectCustomer"
 				name="idUser">
-				<option th:value="0">No customer</option>
+				<option th:value="0">---Sin Registro---</option>
 				<option th:each="client : ${clients}" th:value="${client.id}"
 					th:text="${client.id}+' : '+${client.name}+'  '+${client.lastName}"></option>
 			</select>
@@ -40,18 +80,18 @@
 		</p>
 
 	</form>
-	<Br><Br><Br><Br><Br><Br><Br><Br><Br>
+	
 	
 	<div align="center">
 		<table>
 			<tr>
 
 				<td><a th:href="@{/books/show}">Product List</a></td>
-				<td><a th:href="@{/cart/show}">My cart</a></td>
+				<td><a th:href="@{/user/show}">My cart</a></td>
 				<td><a th:href="@{/creditcards/addCreditCard}">Add Card</a></td>
-				<td><a th:href="@{/customers/addCustomer}">Add Client</a></td>
+				
 				<td><a th:href="@{/creditcards/show}">List of Cards</a></td>
-				<td><a th:href="@{/customers/show}">List of clients</a></td>
+				<td><a th:href="@{/user/show}">Lista de Usuarios</a></td>
 			</tr>
 		</table>
 	</div>

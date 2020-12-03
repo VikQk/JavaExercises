@@ -37,7 +37,7 @@ public class BookController {
 		model.addAttribute("books", service.findAll());
 		
 		//System.out.println(service.findById((Long)session.getAttribute("userId")));
-		model.addAttribute("user", uService.findById((Long)session.getAttribute("userId")));
+		model.addAttribute("user","Bienvenido: " + uService.findById((Long)session.getAttribute("userId")).get().getName());
 		
 		
 		return "library/books";
