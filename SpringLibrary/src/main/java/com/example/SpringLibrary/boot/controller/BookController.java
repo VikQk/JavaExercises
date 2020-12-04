@@ -29,24 +29,23 @@ public class BookController {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
-		model.addAttribute("serverTime", formattedDate);
 		
-	
+		model.addAttribute("serverTime", formattedDate);
 		
 		model.addAttribute("books", service.findAll());
 		
-		//System.out.println(service.findById((Long)session.getAttribute("userId")));
 		model.addAttribute("user","Bienvenido: " + uService.findById((Long)session.getAttribute("userId")).get().getName());
 		
 		return "library/books";
-		
-	}	
+		}	
 	
 	@RequestMapping("/insertBook")
 	public String insertBook (Book book, Model model) {
 		System.out.println(model.getAttribute(book.getAuthor()));
 		System.out.println(book.getTitle());
+		
 		service.insertBook(book);
+		
 		model.addAttribute("library",service.findAll());
 		
 		return "redirect: books/library.html";

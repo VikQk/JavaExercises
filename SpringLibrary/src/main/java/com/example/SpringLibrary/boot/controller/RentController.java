@@ -42,19 +42,23 @@ public class RentController {
 	@RequestMapping("/createRent")
 	public String createRent(@RequestParam("bookId") Long id,Locale locale, Model model,HttpSession session) {
 		
-		Optional<Book> foundBook = bService.findById(id);
-		Optional<User> foundUser = uService.findById((Long)session.getAttribute("userId"));
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
+				
+		Optional<Book> foundBook = bService.findById(id);
+		Optional<User> foundUser = uService.findById((Long)session.getAttribute("userId"));
+		
 		Rent rent = new Rent ();
 		rent.setUserId(foundUser.get());
-		rent.setBookId(foundBook.get());
-		String time=(String) formattedDate;
-		rent.setTime(time);
+		rent.setBookId(foundBook.get());		
+		rent.setTime(formattedDate);
+		
+		String book = foundBook.get().getTitle() + foundBook.get().getAuthor();
+		String user = foundUser.get().getName() + foundUser.get().getLastName();
 		service.insertRent(rent);
 		
-		model.addAttribute("rent",service.findAll());
+		model.addAttribute("rent",book + user );
 		
 		return "redirect:/rents/show";
 	}

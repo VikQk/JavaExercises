@@ -20,8 +20,8 @@
 
 	<tr th:each="atribut:${rent}">
 		<td th:text="${atribut.id}"></td>  				
-		<td th:text="${atribut.userId}"></td>
-		<td th:text="${atribut.bookId}"></td>
+		<td th:text="${atribut.userId.getName + ' '+atribut.userId.getLastName}"></td>
+		<td th:text="${'Author:'+ atribut.bookId.getAuthor+' Titulo: '+atribut.bookId.getTitle}"></td>
 		<td th:text="${atribut.time}"></td>
 		<td><a th:href="@{deleteRent(rentId=${atribut.id})}"
 			class="w3-btn w3-blue"> Devolver</a></td>
