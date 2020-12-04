@@ -24,9 +24,7 @@
 <body>
 	<div class="w3-bar w3-black w3-border">
 	<a th:href="@{/}" class="w3-bar-item w3-button w3-mobile">Home</a>
-	<a th:href="@{/books/show}" class="w3-bar-item w3-button">Mi Biblioteca</a>
-	
-	
+	<a th:href="@{/books/show}" class="w3-bar-item w3-button">Mi Biblioteca</a>	
 	<form align="right" th:action="@{/loginUser}"
 		th:object="${client}" method="post">
 <a th:text="${session.sid}"></a>

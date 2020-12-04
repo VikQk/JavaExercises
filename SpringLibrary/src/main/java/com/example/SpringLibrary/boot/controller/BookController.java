@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.SpringLibrary.boot.model.Book;
-import com.example.SpringLibrary.boot.model.User;
 import com.example.SpringLibrary.boot.service.BookService;
 import com.example.SpringLibrary.boot.service.UserService;
 
@@ -38,7 +37,6 @@ public class BookController {
 		
 		//System.out.println(service.findById((Long)session.getAttribute("userId")));
 		model.addAttribute("user","Bienvenido: " + uService.findById((Long)session.getAttribute("userId")).get().getName());
-		
 		
 		return "library/books";
 		

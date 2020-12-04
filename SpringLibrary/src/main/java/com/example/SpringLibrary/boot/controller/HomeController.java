@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +18,11 @@ import com.example.SpringLibrary.boot.service.UserService;
 public class HomeController {
 	
 	@Autowired
-	UserService service;
-	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	UserService service;	
 
 	@RequestMapping(value = { "/" ,"/*"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
-		//logger.info("Welcome home! The client locale is {}.", locale);
+		
 		//Unicamente muestra la hora actual de nuesto equipo.
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -58,6 +51,6 @@ public class HomeController {
 		// Search for a book with an invalid ID
 		if (foundUser.isPresent()) session.setAttribute("User", foundUser.get());
 		
-		return "library/login";
+		return "redirect:/books/show";
 	}
 }

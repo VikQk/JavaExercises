@@ -1,7 +1,5 @@
 package com.example.SpringLibrary.boot.model;
 
-import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,16 +23,17 @@ public class Rent {
 	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name = "Book_ID")
 	private Book bookId;
-
+	@JoinColumn(name = "time")
+	private String time;
+	
 	public Rent () {}
 
-	public Rent( User user,Book book) {
+	public Rent( User user,Book book,String time) {
 		super();
 		
 		this.userId = user;
-		this.bookId = book;
-		
-		
+		this.bookId = book;		
+		this.time = time;
 	}
 
 	
@@ -67,6 +66,12 @@ public class Rent {
 		this.bookId = bookId;
 	}
 
-	
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
 	
 }

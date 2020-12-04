@@ -13,21 +13,22 @@
 		<tr class="w3-gray">
 			<th>Id</th>
 			<th>Usuario</th>
-			<th>Libro</th>			
+			<th>Libro</th>
+			<th>Fecha de Alquiler</th>
 		</tr>
 	</thead>
 
 	<tr th:each="atribut:${rent}">
-		<td th:text="${atribut.id}"></td>
-  		<!-- <td th:text="${atribut.timestamp}"></td>-->		
+		<td th:text="${atribut.id}"></td>  				
 		<td th:text="${atribut.userId}"></td>
 		<td th:text="${atribut.bookId}"></td>
+		<td th:text="${atribut.time}"></td>
 		<td><a th:href="@{deleteRent(rentId=${atribut.id})}"
 			class="w3-btn w3-blue"> Devolver</a></td>
 		
 	</tr>
-	<tr><td><h3><a th:href="@{/books/show}" class="w3-btn w3-blue">Volver</a></h3></tr>
-
+	
 </table>
+<h3><a th:href="@{/books/show}" class="w3-btn w3-blue">Volver</a></h3>
 
 </html>

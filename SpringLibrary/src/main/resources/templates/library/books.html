@@ -13,8 +13,7 @@
 
 			<a onclick="document.getElementById('id01').style.display='block'"
 					class="w3-bar-item w3-button w3-red w3-mobile w3-right"th:text="${user}"></a>
-			<a onclick="document.getElementById('id02').style.display='block'"
-					class="w3-bar-item w3-button w3-mobile w3-right">Mi Carrito</a>
+			<a th:href="@{/rents/show}" class="w3-bar-item w3-button w3-mobile">Mi Carrito</a>
 			<input	type="text"
 					class="w3-bar-item w3-input w3-white w3-mobile w3-right"
 					placeholder="Search..">
