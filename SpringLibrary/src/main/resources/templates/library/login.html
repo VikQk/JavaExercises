@@ -3,95 +3,98 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div>
+	<header class="w3-bar- w3-black w3-border"
+		style="position: sticky; top: 0;">
+		<a th:href="@{/}" class="w3-bar-item w3-button w3-mobile">Home</a> <a
+			th:href="@{/books/show}" class="w3-bar-item w3-button">Mi
+			Biblioteca</a>
+		<form align="right" th:action="@{/loginUser}" th:object="${client}"
+			method="post">
+			<a th:text="${session.sid}"></a> <a class="w3-container"
+				align="center" th:object="${client}"> <label>Selecciona
+					Usuario</label> <select id="selectCustomer" name="idUser">
+					<option th:value="0">---Sin Registro---</option>
+					<option th:each="client : ${clients}" th:value="${client.id}"
+						th:text="${client.id}+' : '+${client.name}+'  '+${client.lastName}"></option>
+			</select>
 
+				<button class="w3-button  w3-blue  w3-padding" type="submit">Iniciar</button>
+
+			</a>
+
+		</form>
+
+	</header>
+</div>
+
+
+<head>
 <style>
-.header {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: blue;
-	color: grey;
+body {
+	margin:0;
+	font-family: Comic Sans MS;
+	}
+.hero-image{
+	opacity: 0.7;
+	background-image:
+		url("/img/libraryback.jpg");
+	background-color: #cccccc;
+	height:700px;
+	background-position: center;
+	background-repeat: no-repeat;
+	
+}
+.hero-image2{
+	background-image:
+		url("/img/library.png");
+	
+	height:200px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 200px 200px;
+}
+.hero-text {	
 	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: Black;
 }
 </style>
-<head>
-<meta charset="UTF-8">
-
-<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"></title>
-
 </head>
 <body>
-	<div class="w3-bar w3-black w3-border">
-	<a th:href="@{/}" class="w3-bar-item w3-button w3-mobile">Home</a>
-	<a th:href="@{/books/show}" class="w3-bar-item w3-button">Mi Biblioteca</a>	
-	<form align="right" th:action="@{/loginUser}"
-		th:object="${client}" method="post">
-<a th:text="${session.sid}"></a>
-		<a class="w3-container" align="center" th:object="${client}">
-			<label>Selecciona Usuario</label> <select id="selectCustomer"
-				name="idUser">
-				<option th:value="0">---Sin Registro---</option>
-				<option th:each="client : ${clients}" th:value="${client.id}"
-					th:text="${client.id}+' : '+${client.name}+'  '+${client.lastName}"></option>
-			</select>
-			
-			<button class="w3-button  w3-blue  w3-padding"type="submit">Iniciar</button>
-				
-		</a>		
 
-	</form>
-	
+<div class="hero-image">
+	<div class="hero-text">
+		<h1 style="font-size:100px">BiblioByte</h1>
+		<h3>Tu Biblioteca Online de Confianza</h3>
+		<div class="hero-image2"></div>
 	</div>
-	<h3 align="center">Biblioteca Online</h3>
-	<Br>
-	<Br>
-	<Br>
+</div>
 
-	<table align="center">
-		<tr>
-			<td>Session id:</td>
-			<td th:text="${session.sid}"></td>
+<table align="center" text>
+	<tr>
+		<td>Session id:</td>
+		<td th:text="${session.sid}"></td>
+	</tr>
+</table>
+
+
+<p align="center" th:text="${serverTime}"></p>
+
+
+
+
+
+
+<div align="center">
+	<table>
+		<tr>			
+			<td><a th:href="@{/user/show}">Lista de Usuarios</a></td>
 		</tr>
 	</table>
-
-
-	<p align="center" th:text="${serverTime}"></p>
-
-
-
-	<form align="center" th:action="@{/loginUser}"
-		th:object="${client}" method="post">
-
-
-
-		<div class="w3-container" align="center" th:object="${client}">
-			<label>Selecciona Usuario</label> <select id="selectCustomer"
-				name="idUser">
-				<option th:value="0">---Sin Registro---</option>
-				<option th:each="client : ${clients}" th:value="${client.id}"
-					th:text="${client.id}+' : '+${client.name}+'  '+${client.lastName}"></option>
-			</select>
-		</div>
-		<p>
-			<button type="submit">Add</button>
-		</p>
-
-	</form>
-	
-	
-	<div align="center">
-		<table>
-			<tr>
-
-				<td><a th:href="@{/books/show}">Product List</a></td>
-				<td><a th:href="@{/user/show}">My cart</a></td>
-				<td><a th:href="@{/creditcards/addCreditCard}">Add Card</a></td>
-				
-				<td><a th:href="@{/creditcards/show}">List of Cards</a></td>
-				<td><a th:href="@{/user/show}">Lista de Usuarios</a></td>
-			</tr>
-		</table>
-	</div>
+</div>
 </body>
 </html>

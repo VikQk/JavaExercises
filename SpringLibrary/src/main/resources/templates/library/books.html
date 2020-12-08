@@ -2,48 +2,55 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {
+	background-image: url("/img/libraryback.jpg");
+}
 
+.text {
+	font-family: "Sofia", sans-serif;
+	font-size: 70px;
+	text-shadow: 4px 4px 4px #ababab;
+	color: white;
+}
+</style>
 <div class="w3-container">
-	
-		
-		<div class="w3-bar w3-black w3-border">
 
-			<a th:href="@{/}" class="w3-bar-item w3-button w3-mobile">Home</a>
-			<a th:href="@{/buy}" class="w3-bar-item w3-button w3-mobile">Pagar</a>
 
-			<a onclick="document.getElementById('id01').style.display='block'"
-					class="w3-bar-item w3-button w3-red w3-mobile w3-right"th:text="${user}"></a>
-			<a th:href="@{/rents/show}" class="w3-bar-item w3-button w3-mobile">Mi Carrito</a>
-			<input	type="text"
-					class="w3-bar-item w3-input w3-white w3-mobile w3-right"
-					placeholder="Search..">
-			
-			<button class="w3-bar-item w3-button w3-blue w3-mobile w3-right">Go</button>
-			<a class="w3-bar-item w3-right" th:text="${serverTime}"></a>
-		</div>
-		</div>
+	<div class="w3-bar w3-black w3-border">
+
+		<a th:href="@{/}" class="w3-bar-item w3-button w3-mobile">Inicio</a>
+		<a class="w3-bar-item w3-button w3-red w3-mobile w3-right"	
+			th:text="${user}"></a> 
+		<a th:href="@{/rents/show}"	
+			class="w3-bar-item w3-button w3-mobile">Mis Libros</a> 
+		<a class="w3-bar-item w3-right" 
+			th:text="${serverTime}"></a>
+	</div>
+</div>
 <div class="w3-container">
-<h2>Mi Biblioteca</h2>
+	<div class="text">
+	<h1>Mi Biblioteca</h1>
+	</div>
+	<img
+		src="https://static.vecteezy.com/system/resources/thumbnails/001/200/145/small/books.png">
+	<table class="w3-table-all w3-hoverable">
+		<thead>
+			<tr class="w3-gray">
+				<th>Id</th>
+				<th>Titulo</th>
+				<th>Autor</th>
+			</tr>
+		</thead>
 
-<img
-	src="https://static.vecteezy.com/system/resources/thumbnails/001/200/145/small/books.png">
-<table class="w3-table-all w3-hoverable">
-	<thead>
-		<tr class="w3-gray">
-			<th>Id</th>
-			<th>Titulo</th>
-			<th>Autor</th>			
+		<tr th:each="book:${books}">
+			<td th:text="${book.id}"></td>
+			<td th:text="${book.title}"></td>
+			<td th:text="${book.author}"></td>
+			<td><a th:href="@{/rents/createRent(bookId=${book.id})}"
+				class="w3-btn w3-blue"> Alquilar</a></td>
 		</tr>
-	</thead>
 
-	<tr th:each="book:${books}">
-		<td th:text="${book.id}"></td>
-		<td th:text="${book.title}"></td>
-		<td th:text="${book.author}"></td>
-		<td><a th:href="@{/rents/createRent(bookId=${book.id})}"
-			class="w3-btn w3-blue"> Alquilar</a></td>
-	</tr>
-
-</table>
+	</table>
 </div>
 </html>
