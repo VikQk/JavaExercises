@@ -8,15 +8,15 @@
 <form th:action="@{/creditcards/insertCreditCard}" th:object="${creditCard}" method="post">
      
 	<p>
-		<label>Type Credit Card</label> <input name="typeCreditCard"
+		<label>Quote id</label> <input name="id"
 			type="text">
 	</p>
 	<p>
-		<label>Number Credit Card</label> <input name="numberCreditCard"
+		<label>quote tag</label> <input name="tag"
 			type="text">
 	</p>
 	<p>
-		<label>Loan</label> <input name="loan" type="number">
+		<label>quote sentence</label> <input name="sentence" type="number">
 	</p>
 
 		<div th:object="${client}">

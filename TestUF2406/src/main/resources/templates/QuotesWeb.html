@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<h3>Quotes list</h3>
+<table>
+
+	<tr th:each="Quote:${QuotesWeb}">
+		<td th:text="${Quote.id}"></td>
+		<td th:text="${Quote.tag}"></td>
+		<td th:text="${Quote.sentence}"></td>
+		<td th:text="${Quote.numberWords}"></td>
+		<td th:text="${Quote.book}"></td>
+		
+	</tr>
+
+</table>
+
+</html>
