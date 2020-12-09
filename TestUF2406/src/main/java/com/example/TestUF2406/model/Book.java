@@ -1,13 +1,17 @@
 package com.example.TestUF2406.model;
 
 import java.util.ArrayList;
-
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,27 +22,33 @@ import javax.persistence.Table;
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name="ID")
+	private Long id;
+	@Column(name="TITLE")
 	private String title;
-	private ArrayList<Quote> quotes;
+	@Column(name="AUTHOR")
+	private String author;
+	//@OneToMany(mappedBy = "QUOTE",cascade = CascadeType.ALL)
+	//private List<Quote> quotes = new ArrayList<>();
 
 	Book() {
 	}
 
-	public Book(Integer id, String name) {
+	public Book(Long id, String name, String author) {
 		this.id = id;
 		this.title = name;
+		this.author = author;
 	}
 
 	public Book(String name) {
 		this.title = name;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -50,13 +60,21 @@ public class Book {
 		this.title = name;
 	}
 
-	public ArrayList<Quote> getQuotes() {
-		return quotes;
+	/*
+	 * public List<Quote> getQuotes() { return quotes; }
+	 * 
+	 * public void setQuote(Quote quotes) { this.quotes.add(quotes); }
+	 */
+	
+
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setQuote(ArrayList<Quote> quotes) {
-		this.quotes = quotes;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
+	
 
 	@Override
 	public String toString() {

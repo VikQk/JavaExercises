@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <h3>Quotes list</h3>
-<table>
+<table class="w3-table-all w3-hoverable">
+
+	<thead>
+		<tr class="w3-blue">
+			<th>Id</th>
+			<th>Sentence</th>
+			<th>Book</th>
+			<th>Author</th>
+		</tr>
 
 	<tr th:each="Quote:${QuotesWeb}">
 		<td th:text="${Quote.id}"></td>
-		<td th:text="${Quote.tag}"></td>
-		<td th:text="${Quote.sentence}"></td>
-		<td th:text="${Quote.numberWords}"></td>
-		<td th:text="${Quote.book}"></td>
 		
+		<td th:text="${Quote.sentence}"></td>
+		
+		<td th:text="${Quote.book.title}"></td>
+		
+		<td th:text="${Quote.book.author}"></td>
 	</tr>
 
 </table>
+<a th:href="@{/quotes/addQuote}" class="w3-button w3-gray">New Quote</a>
+
+<a th:href="@{/quotes/addBook}" class="w3-button w3-gray">New Book</a>
 
 </html>

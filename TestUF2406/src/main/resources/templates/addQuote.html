@@ -2,29 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 
-<h3>Add Card form</h3>
+<h3>New Quote form</h3>
 
 <!-- <form action="insertCreditCard"> -->
-<form th:action="@{/quotes/addQuote}" th:object="${quote}" method="post">
-     
+<form th:action="@{/quotes/insertQuote}" th:object="${quote}" method="post">
+         
 	<p>
-		<label>Type Credit Card</label> <input name="typeCreditCard"
+		<label>Sentence</label> <input name="sentence"
 			type="text">
 	</p>
+	
 	<p>
-		<label>Number Credit Card</label> <input name="numberCreditCard"
-			type="text">
-	</p>
-	<p>
-		<label>Loan</label> <input name="loan" type="number">
+		<label>Number of Words</label> <input name="numberWords" type="number">
 	</p>
 
 		<div th:object="${book}">
-			<label>Select Customer</label>
-			<select id="selectBook" name="IdBook">
-				<option th:value="0">No customer</option>
+			<label>Select Book</label>
+			<select id="selectBook" name="idbook">
+				<option th:value="0">No Book selected</option>
 				<option th:each="book : ${books}" th:value="${book.id}" 
-					th:text="${book.id}+' : '+${book.title}+' "></option>
+					th:text="${book.id}+' : '+${book.title}"></option>
 			</select>
 		</div>
 	<p>

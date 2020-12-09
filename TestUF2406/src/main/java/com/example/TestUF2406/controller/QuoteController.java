@@ -1,10 +1,15 @@
 package com.example.TestUF2406.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.TestUF2406.model.Book;
 import com.example.TestUF2406.model.Quote;
 import com.example.TestUF2406.service.BookService;
 import com.example.TestUF2406.service.QuoteService;
@@ -34,14 +39,21 @@ public class QuoteController {
 		return "addQuote";
 		
 	}
-	@RequestMapping("/insertQuote")
-	public String inserQuote(Quote quote,Model model) {
+	@RequestMapping(value="/insertQuote",method = RequestMethod.POST)
+	public String inserQuote(Quote quote,Model model,@RequestParam("idbook")Long id) {
 		
-		service.insertQuote(quote);
+		Optional<Book> foundBook = bService.findById(id);
+		
+		//foundBook.get().setQuote(quote);
+		
+		if(foundBook.isPresent()) quote.setBook(foundBook.get());
+		else 
+		
+		
 		
 		model.addAttribute("quotes", service.findAll());
 		
-		return "redirect;QuotesWeb";
+		return "redirect; quotes/showquote";
 	}
 
 }

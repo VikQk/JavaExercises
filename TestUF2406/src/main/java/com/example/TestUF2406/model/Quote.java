@@ -1,5 +1,6 @@
 package com.example.TestUF2406.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,34 +8,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name="QUOTE")
 public class Quote {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private String tag;
+	@Column(name="ID")
+	private Long id;
+	@Column(name="SENTENCE")
 	private String sentence;
+	@Column(name="NUMBER_WORDS")
 	private int numberWords;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name= "BOOK_ID")
+	@JoinColumn(name= "Idbook", nullable=true)
 	private Book book;
 		
 	public Quote() {
 		super();
 	}
-	public Quote(int id, String sentence, int numberWords, Book book) {
+	public Quote(Long id, String sentence, int numberWords) {
 		super();
 		this.id = id;
+		
 		this.sentence = sentence;
 		this.numberWords = numberWords;
-		this.book = book;
+		
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getSentence() {
@@ -43,12 +51,7 @@ public class Quote {
 	public void setSentence(String sentence) {
 		this.sentence = sentence;
 	}
-public String getTag() {
-		return tag;
-	}
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
+
 	public int getNumberWords() {
 		return numberWords;
 	}
