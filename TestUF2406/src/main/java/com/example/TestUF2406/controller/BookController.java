@@ -33,6 +33,6 @@ public class BookController {
 		
 		model.addAttribute("booksWeb", service.findAll());
 		
-		return "redirect; booksWeb";
+		return "redirect:/quotes/showquote";
 	}
 }

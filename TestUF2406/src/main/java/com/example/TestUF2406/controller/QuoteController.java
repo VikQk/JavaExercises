@@ -47,13 +47,15 @@ public class QuoteController {
 		//foundBook.get().setQuote(quote);
 		
 		if(foundBook.isPresent()) quote.setBook(foundBook.get());
-		else 
+		else quote.setBook(null);
+		
+		service.insertQuote(quote);
 		
 		
 		
 		model.addAttribute("quotes", service.findAll());
 		
-		return "redirect; quotes/showquote";
+		return "redirect:/quotes/showquote";
 	}
 
 }

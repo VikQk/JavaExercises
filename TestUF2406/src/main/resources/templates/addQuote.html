@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <h3>New Quote form</h3>
 
 <!-- <form action="insertCreditCard"> -->
-<form th:action="@{/quotes/insertQuote}" th:object="${quote}" method="post">
+<form th:action="@{/quotes/insertQuote}" class="w3-table-all w3-hoverable" th:object="${quote}" method="post">
          
 	<p>
 		<label>Sentence</label> <input name="sentence"
@@ -25,7 +26,7 @@
 			</select>
 		</div>
 	<p>
-		<button type="submit">Add</button>
+		<a class="w3-button w3-blue" type="submit">Add</a>
 	</p>
 	
 </form>
