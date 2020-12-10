@@ -36,7 +36,7 @@ public class RentController {
 				
 		model.addAttribute("rent", service.findAll());
 		return "library/rent";
-			
+
 	}
 	
 	@RequestMapping("/createRent")
@@ -51,14 +51,18 @@ public class RentController {
 		
 		Rent rent = new Rent ();
 		rent.setUserId(foundUser.get());
-		rent.setBookId(foundBook.get());		
+		rent.setBookId(foundBook.get());
 		rent.setTime(formattedDate);
-		
-		String book = foundBook.get().getTitle() + foundBook.get().getAuthor();
-		String user = foundUser.get().getName() + foundUser.get().getLastName();
 		service.insertRent(rent);
 		
-		model.addAttribute("rent",book + user );
+		//No soy capaz de encontrar un metodo que busque en la tabla rent, por la id de usuario,
+		//y solo carque los registros de esta id de usuario en service, para que la web solo muestre 
+		//rents del usuario logueado
+		
+		//String book = foundBook.get().getTitle() + foundBook.get().getAuthor();
+		//String user = foundUser.get().getName() + foundUser.get().getLastName();
+				
+		//model.addAttribute("rent",book + user );
 		
 		return "redirect:/rents/show";
 	}

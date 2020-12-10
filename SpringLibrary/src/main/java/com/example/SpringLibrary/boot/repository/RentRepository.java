@@ -5,5 +5,4 @@ import com.example.SpringLibrary.boot.model.Rent;
 
 public interface RentRepository extends CrudRepository<Rent, Long>{
 
-	
 }
