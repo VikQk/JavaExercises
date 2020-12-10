@@ -6,28 +6,27 @@
 <h3>New Quote form</h3>
 
 <!-- <form action="insertCreditCard"> -->
-<form th:action="@{/quotes/insertQuote}" class="w3-table-all w3-hoverable" th:object="${quote}" method="post">
-         
+<form th:action="@{/quotes/insertQuote}"
+	class="w3-table-all w3-hoverable" th:object="${quote}" method="post">
+
 	<p>
-		<label>Sentence</label> <input name="sentence"
-			type="text">
+		<label>Sentence</label> <input name="sentence" type="text">
 	</p>
-	
+
 	<p>
 		<label>Number of Words</label> <input name="numberWords" type="number">
 	</p>
 
-		<div th:object="${book}">
-			<label>Select Book</label>
-			<select id="selectBook" name="idbook">
-				<option th:value="0">No Book selected</option>
-				<option th:each="book : ${books}" th:value="${book.id}" 
-					th:text="${book.id}+' : '+${book.title}"></option>
-			</select>
-		</div>
+	<div th:object="${book}">
+		<label>Select Book</label> <select id="selectBook" name="idbook">
+			<option th:value="0">No Book selected</option>
+			<option th:each="book : ${books}" th:value="${book.id}"
+				th:text="${book.id}+' : '+${book.title}"></option>
+		</select>
+	</div>
 	<p>
-		<a class="w3-button w3-blue" type="submit">Add</a>
+		<button class="w3-btn w3-blue">Add</button>
 	</p>
-	
+
 </form>
 </html>
